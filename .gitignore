@@ -1,5 +1,6 @@
-bin/
-obj/
-_ReSharper.*/
+bin
+obj
+_ReSharper.*
 *.suo
 *.csproj.user
+*.ReSharper.user
