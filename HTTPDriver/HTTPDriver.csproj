@@ -44,7 +44,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Element.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HttpDriver.cs" />
     <Compile Include="Navigation.cs" />
