@@ -5,6 +5,14 @@ namespace HTTPDriver
 {
     public class HttpDriver : IWebDriver
     {
+        private readonly IWebRequester _webRequester;
+        private IWebResponder _webResponder;
+
+        public HttpDriver(IWebRequester webRequester)
+        {
+            _webRequester = webRequester;
+        }
+
         public IWebElement FindElement(By @by)
         {
             throw new System.NotImplementedException();
@@ -49,7 +57,7 @@ namespace HTTPDriver
 
         public string Title
         {
-            get { throw new System.NotImplementedException(); }
+            get { return _webResponder.GetTitle(); }
         }
 
         public string PageSource
@@ -65,6 +73,11 @@ namespace HTTPDriver
         public ReadOnlyCollection<string> WindowHandles
         {
             get { throw new System.NotImplementedException(); }
+        }
+
+        public void SendRequest()
+        {
+            _webResponder = _webRequester.Request(Url);
         }
     }
 }

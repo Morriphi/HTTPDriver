@@ -46,7 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\NavigationFakeWebRequester.cs" />
+    <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
+    <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="HistoryTest.cs" />
+    <Compile Include="HtmlParserTest.cs" />
     <Compile Include="HttpDriverTest.cs" />
     <Compile Include="NavigationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +61,7 @@
       <Name>HTTPDriver</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

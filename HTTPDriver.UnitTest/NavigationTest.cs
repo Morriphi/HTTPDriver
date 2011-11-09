@@ -1,4 +1,5 @@
 ﻿using System;
+using HTTPDriver.UnitTest.Fakes;
 using NUnit.Framework;
 
 namespace HTTPDriver.UnitTest
@@ -12,10 +13,14 @@ namespace HTTPDriver.UnitTest
         private const string Url2 = @"http://www.testurl2.com";
         private const string Url3 = @"http://www.testurl3.com";
 
+        private NavigationFakeWebRequester _webRequester;
+
         [SetUp]
         public void BeforeEachTest()
         {
-            _driver = new HttpDriver();
+            _webRequester = new NavigationFakeWebRequester();
+
+            _driver = new HttpDriver(_webRequester);
             _navigation = new Navigation(_driver);
         }
 

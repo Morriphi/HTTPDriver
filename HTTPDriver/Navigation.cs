@@ -33,6 +33,7 @@ namespace HTTPDriver
 
             _history.Add(url);
             _driver.Url = _history.CurrentUrl();
+            _driver.SendRequest();
         }
 
         public void GoToUrl(Uri url)
