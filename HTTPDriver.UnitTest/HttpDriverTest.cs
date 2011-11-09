@@ -55,5 +55,18 @@ namespace HTTPDriver.UnitTest
 
             Assert.That(_driver.Title, Is.EqualTo(""));
         }
+
+        [Test]
+        public void PageSource()
+        {
+            var originalPageSouce = "<html><title>Test Title</title></html>";
+
+            _webRequester.AddTestResponseString(Url1, new HtmlParser(originalPageSouce));
+            _driver.Navigate().GoToUrl(Url1);
+            
+            var pageSource = _driver.PageSource;
+
+            Assert.That(pageSource,Is.EqualTo(originalPageSouce));
+        }
     }
 }

@@ -19,5 +19,13 @@ namespace HTTPDriver.UnitTest
 
             Assert.That(parser.GetTitle(), Is.EqualTo(""));
         }
+
+        [Test]
+        public void GetPageSource()
+        {
+            var html = "<html><title>Testing Page Source</title></html>";
+            var parser = new HtmlParser(html);
+            Assert.That(parser.GetSourceCode(), Is.EqualTo(html));
+        }
     }
 }

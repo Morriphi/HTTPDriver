@@ -62,7 +62,7 @@ namespace HTTPDriver
 
         public string PageSource
         {
-            get { throw new System.NotImplementedException(); }
+            get { return _webResponder.GetPageSource(); }
         }
 
         public string CurrentWindowHandle

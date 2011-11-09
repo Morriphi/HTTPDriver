@@ -13,5 +13,10 @@
         {
             return _htmlParser.GetTitle();
         }
+
+        public string GetPageSource()
+        {
+            return _htmlParser.GetSourceCode();
+        }
     }
 }

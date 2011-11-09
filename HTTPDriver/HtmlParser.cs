@@ -1,3 +1,4 @@
+using System.IO;
 using HtmlAgilityPack;
 
 namespace HTTPDriver
@@ -19,6 +20,15 @@ namespace HTTPDriver
             var node = _documentRoot.SelectSingleNode("//title");
 
             return node != null ? node.InnerText : string.Empty;
+        }
+
+        public string GetSourceCode()
+        {
+            var stringWriter = new StringWriter();
+
+            _htmlDocument.Save(stringWriter);
+
+            return stringWriter.ToString();
         }
     }
 }
