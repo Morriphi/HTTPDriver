@@ -64,10 +64,12 @@
     <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="HistoryTest.cs" />
+    <Compile Include="HtmlNodeBuilder.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="HttpDriverTest.cs" />
     <Compile Include="NavigationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebElementFinderTest.cs" />
     <Compile Include="WebElementTest.cs" />
   </ItemGroup>
   <ItemGroup>
