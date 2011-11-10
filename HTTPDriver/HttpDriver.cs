@@ -8,6 +8,7 @@ namespace HTTPDriver
         private readonly IWebRequester _webRequester;
         private IWebResponder _webResponder;
 
+    
         public HttpDriver(IWebRequester webRequester)
         {
             _webRequester = webRequester;

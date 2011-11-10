@@ -12,6 +12,7 @@ namespace HTTPDriver.UnitTest
         private const string Url1 = "http://www.testurl1.com/";
         private const string Url2 = "http://www.testurl2.com/";
         private const string Url3 = "http://www.testurl3.com/";
+        private const string TotaljobsUrl = "http://www.totaljobs.com";
 
         private HttpDriverFakeWebRequester _webRequester;
 
@@ -59,14 +60,29 @@ namespace HTTPDriver.UnitTest
         [Test]
         public void PageSource()
         {
+            //Given
             var originalPageSouce = "<html><title>Test Title</title></html>";
-
             _webRequester.AddTestResponseString(Url1, new HtmlParser(originalPageSouce));
-            _driver.Navigate().GoToUrl(Url1);
-            
+
+            //When
+            _driver.Navigate().GoToUrl(Url1);            
             var pageSource = _driver.PageSource;
 
+            //Then
             Assert.That(pageSource,Is.EqualTo(originalPageSouce));
         }
+
+        [Test]
+        public void Url()
+        {
+            //Given
+            _webRequester.AddTestResponseString(TotaljobsUrl, new HtmlParser("<html><title>Page 1</title></html>"));
+            //When
+            _driver.Navigate().GoToUrl(TotaljobsUrl);
+
+            //Then
+            Assert.That(_driver.Url, Is.EqualTo(TotaljobsUrl));
+        }
+
     }
 }

@@ -8,6 +8,7 @@ namespace HTTPDriver
         private readonly HtmlDocument _htmlDocument;
         private readonly HtmlNode _documentRoot;
 
+       
         public HtmlParser(string html)
         {
             _htmlDocument = new HtmlDocument();
