@@ -38,5 +38,17 @@ namespace HTTPDriver.UnitTest
             Assert.That(element.TagName, Is.EqualTo("div"));
         }
 
+        [Test]
+        public void GetAttribute()
+        {
+            var htmlNode = GetHtmlNodeFrom("<a href=\"http://www.google.com\">Google</a>");
+
+            var element = new WebElement(htmlNode);
+
+            Assert.That(element.GetAttribute("href"), Is.EqualTo("http://www.google.com"));
+        }
+
+
+
     }
 }

@@ -11,7 +11,7 @@ namespace HTTPDriver
 
         public WebElement(HtmlNode element)
         {
-            _element = element;
+            _element = element.FirstChild;
         }
 
         public void Clear()
@@ -36,7 +36,7 @@ namespace HTTPDriver
 
         public string GetAttribute(string attributeName)
         {
-            throw new System.NotImplementedException();
+            return _element.Attributes[attributeName].Value;
         }
 
         public string GetCssValue(string propertyName)
@@ -46,7 +46,7 @@ namespace HTTPDriver
 
         public string TagName
         {
-            get { return _element.FirstChild.Name; }
+            get { return _element.Name; }
         }
 
         public string Text
