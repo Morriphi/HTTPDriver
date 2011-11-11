@@ -14,7 +14,7 @@ namespace HTTPDriver
 
         public WebElementFinder(HtmlNode element)
         {
-            this._element = element;
+            _element = element;
         }
 
         public IWebElement FindElement(By @by)
