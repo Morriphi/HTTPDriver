@@ -11,8 +11,7 @@ namespace HTTPDriver
 
         public WebElement(HtmlNode element)
         {
-            _element = element.NodeType == HtmlNodeType.Document ? 
-                element.FirstChild : element;
+            _element = element;
         }
 
         public void Clear()

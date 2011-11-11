@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Fizzler.Systems.HtmlAgilityPack;
@@ -8,7 +9,7 @@ using OpenQA.Selenium.Internal;
 
 namespace HTTPDriver
 {
-    public class WebElementFinder : IFindsById, IFindsByClassName, IFindsByTagName, IFindsByCssSelector, IFindsByXPath, ISearchContext
+    public class WebElementFinder : IFindsById, IFindsByClassName, IFindsByTagName, IFindsByCssSelector, IFindsByXPath, IFindsByLinkText, IFindsByPartialLinkText, ISearchContext
     {
         private readonly HtmlNode _element;
 
@@ -29,7 +30,7 @@ namespace HTTPDriver
 
         public IWebElement FindElementById(string id)
         {
-            return FindElementByCssSelector("#" + id);
+            return FindElementByXPath("//*[@id='" + id + "']");
         }
 
         public ReadOnlyCollection<IWebElement> FindElementsById(string id)
@@ -39,12 +40,12 @@ namespace HTTPDriver
 
         public IWebElement FindElementByClassName(string className)
         {
-            return FindElementByCssSelector("." + className);
+            return FindElementsByClassName(className).FirstOrDefault();
         }
 
         public ReadOnlyCollection<IWebElement> FindElementsByClassName(string className)
         {
-            return FindElementsByCssSelector("." + className);
+            return FindElementsByXPath("//*[@class='" + className + "']");
         }
 
         public IWebElement FindElementByTagName(string tagName)
@@ -54,7 +55,7 @@ namespace HTTPDriver
 
         public ReadOnlyCollection<IWebElement> FindElementsByTagName(string tagName)
         {
-            return FindElementsByCssSelector(tagName);
+            return FindElementsByXPath("//" + tagName);
         }
 
         public IWebElement FindElementByCssSelector(string cssSelector)
@@ -81,9 +82,32 @@ namespace HTTPDriver
 
         private ReadOnlyCollection<IWebElement> HtmlNodesToWebElements(IEnumerable nodes)
         {
+            if(nodes == null)
+                return new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
+
             var webElements = (from match in nodes.Cast<HtmlNode>()
                                select new WebElement(match) as IWebElement).ToList();
             return new ReadOnlyCollection<IWebElement>(webElements);
+        }
+
+        public IWebElement FindElementByLinkText(string linkText)
+        {
+            return FindElementsByLinkText(linkText).FirstOrDefault();
+        }
+
+        public ReadOnlyCollection<IWebElement> FindElementsByLinkText(string linkText)
+        {
+            return FindElementsByXPath("//a[text()='"+ linkText + "']");
+        }
+
+        public IWebElement FindElementByPartialLinkText(string linkText)
+        {
+            return FindElementsByPartialLinkText(linkText).FirstOrDefault();
+        }
+
+        public ReadOnlyCollection<IWebElement> FindElementsByPartialLinkText(string linkText)
+        {
+            return FindElementsByXPath("//a[contains(text(), '" + linkText + "')]");
         }
     }
 }
