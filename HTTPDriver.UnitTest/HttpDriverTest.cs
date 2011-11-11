@@ -96,6 +96,8 @@ namespace HTTPDriver.UnitTest
             //Then
             Assert.That(foundElement, Is.Not.Null);
             Assert.That(foundElement, Is.InstanceOf<IWebElement>());
+            Assert.That(foundElement.TagName, Is.EqualTo("h1"));
+            Assert.That(foundElement.Text, Is.EqualTo("The Header 1"));
         }
 
     }

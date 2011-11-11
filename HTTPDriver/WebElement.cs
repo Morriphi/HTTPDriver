@@ -11,7 +11,8 @@ namespace HTTPDriver
 
         public WebElement(HtmlNode element)
         {
-            _element = element.FirstChild;
+            _element = element.NodeType == HtmlNodeType.Document ? 
+                element.FirstChild : element;
         }
 
         public void Clear()
@@ -81,12 +82,12 @@ namespace HTTPDriver
 
         public IWebElement FindElement(By @by)
         {
-            throw new System.NotImplementedException();
+            return by.FindElement(new WebElementFinder(_element));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            throw new System.NotImplementedException();
+            return by.FindElements(new WebElementFinder(_element));
         }
     }
 }

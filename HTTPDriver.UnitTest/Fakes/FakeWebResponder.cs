@@ -1,4 +1,6 @@
-﻿namespace HTTPDriver.UnitTest.Fakes
+﻿using HtmlAgilityPack;
+
+namespace HTTPDriver.UnitTest.Fakes
 {
     public class FakeWebResponder : IWebResponder
     {
@@ -17,6 +19,12 @@
         public string GetPageSource()
         {
             return _htmlParser.GetSourceCode();
+        }
+
+        public HtmlNode GetDocumentElement()
+        {
+            var htmlBuilder = new HtmlNodeBuilder(GetPageSource());
+            return htmlBuilder.Build();
         }
     }
 }

@@ -15,9 +15,10 @@ namespace HTTPDriver
             _webRequester = webRequester;
         }
 
-        public IWebElement FindElement(By @by)
-        {            
-            throw new NotImplementedException();
+        public IWebElement FindElement(By by)
+        {
+            var document = _webResponder.GetDocumentElement();
+            return by.FindElement(new WebElementFinder(document));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
