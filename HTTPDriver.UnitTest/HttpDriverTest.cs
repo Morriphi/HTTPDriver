@@ -84,5 +84,19 @@ namespace HTTPDriver.UnitTest
             Assert.That(_driver.Url, Is.EqualTo(TotaljobsUrl));
         }
 
+        [Test]
+        public void FindElement()
+        {
+            //Given
+            _webRequester.AddTestResponseString(TotaljobsUrl, new HtmlParser("<html><title>Page 1</title><body><h1>The Header 1</h1></body></html>"));
+            //When
+            _driver.Navigate().GoToUrl(TotaljobsUrl);
+            var foundElement = _driver.FindElement(By.TagName("h1"));
+
+            //Then
+            Assert.That(foundElement, Is.Not.Null);
+            Assert.That(foundElement, Is.InstanceOf<IWebElement>());
+        }
+
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 
@@ -15,8 +16,8 @@ namespace HTTPDriver
         }
 
         public IWebElement FindElement(By @by)
-        {
-            throw new System.NotImplementedException();
+        {            
+            throw new NotImplementedException();
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
