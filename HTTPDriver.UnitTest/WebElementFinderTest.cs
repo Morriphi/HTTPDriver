@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HTTPDriver.UnitTest
@@ -9,132 +10,169 @@ namespace HTTPDriver.UnitTest
         [Test]
         public void FindElementById()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body><div id=\"page-body\">Hello world</div></body></html>").Build();
+            var finder = CreateElementFinder("<html><body><div id=\"page-body\">Hello world</div></body></html>");
 
-            var document = new WebElementFinder(htmlNode);
-            var div = document.FindElement(By.Id("page-body"));
-
-            Assert.That(div.TagName, Is.EqualTo("div"));
-            Assert.That(div.Text, Is.EqualTo("Hello world"));
+            var div = finder.FindElement(By.Id("page-body"));
+            AssertTag(div, "div", "Hello world");
         }
 
         [Test]
         public void FindElementByClassName()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                                           "<ul class=\"navigation\"><li>Item 1</li><li>Item 2</li></ul>" +
-                                           "</body></html>").Build();
+            var finder = CreateElementFinder("<ul class=\"navigation\"><li>Item 1</li><li>Item 2</li></ul>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElement(By.ClassName("navigation"));
-
-            Assert.That(list.TagName, Is.EqualTo("ul"));
+            var list = finder.FindElement(By.ClassName("navigation"));
+            AssertTag(list, "ul");
         }
 
         [Test]
         public void FindElementsByClassName()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                                           "<ul><li class=\"nav-item\">Item 1</li><li class=\"nav-item\">Item 2</li></ul>" +
-                                           "</body></html>").Build();
+            var finder = CreateElementFinder("<ul><li class=\"nav-item\">Item 1</li><li class=\"nav-item\">Item 2</li></ul>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElements(By.ClassName("nav-item"));
-
-            Assert.That(list.Count, Is.EqualTo(2));
-            Assert.That(list[0].TagName, Is.EqualTo("li"));
-            Assert.That(list[1].TagName, Is.EqualTo("li"));
+            var list = finder.FindElements(By.ClassName("nav-item"));
+            AssertTag(list, "li", 2);
         }
 
         [Test]
         public void FindElementByTagName()
         {
-            var paragraphText = "elephant";
-            var tagName = "p";
+            var finder = CreateElementFinder("<html><body><p>elephant</p></body></html>");
 
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                               string.Format("<p>{0}</p>", paragraphText) +
-                               "</body></html>").Build();
-
-            var document = new WebElementFinder(htmlNode);
-            var paragraph = document.FindElement(By.TagName(tagName));
-
-            Assert.That(paragraph.TagName, Is.EqualTo(tagName));
-            Assert.That(paragraph.Text, Is.EqualTo(paragraphText));
+            var paragraph = finder.FindElement(By.TagName("p"));
+            AssertTag(paragraph, "p", "elephant");
         }
 
         [Test]
         public void FindElementsByTagName()
         {
-            var tagName = "td";
 
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                               "<table><tr><td>foo</td><td>bar</td></tr></table>" +
-                               "</body></html>").Build();
+            var finder = CreateElementFinder("<table><tr><td>foo</td><td>bar</td></tr></table>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElements(By.TagName(tagName));
-
-            Assert.That(list.Count, Is.EqualTo(2));
-            Assert.That(list[0].TagName, Is.EqualTo(tagName));
-            Assert.That(list[1].TagName, Is.EqualTo(tagName));
+            var list = finder.FindElements(By.TagName("td"));
+            AssertTag(list, "td", 2);
         }
 
         [Test]
         public void FindElementByCssSelector()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body><input type=\"button\"></body></html>").Build();
+            var finder = CreateElementFinder("<html><body><input type=\"button\"></body></html>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElement(By.CssSelector("input[type=button]"));
-
-            Assert.That(list.TagName, Is.EqualTo("input"));
+            var button = finder.FindElement(By.CssSelector("input[type=button]"));
+            AssertTag(button, "input");
         }
 
         [Test]
         public void FindElementsByCssSelector()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                                           "<form><input type=\"text\" class=\"field\"><input type=\"button\" class=\"field\"></form>" +
-                                           "</body></html>").Build();
+            var finder = CreateElementFinder("<html><body>" +
+                                             "<form><input type=\"text\" class=\"field\"><input type=\"button\" class=\"field\"></form>" +
+                                             "</body></html>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElements(By.CssSelector(".field"));
-
-            Assert.That(list.Count, Is.EqualTo(2));
-            Assert.That(list[0].TagName, Is.EqualTo("input"));
-            Assert.That(list[1].TagName, Is.EqualTo("input"));
+            var list = finder.FindElements(By.CssSelector(".field"));
+            AssertTag(list, "input", 2);
         }
 
         [Test]
         public void FindElementByXPath()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                                           "<a href=\"http://www.google.com\">google</a>" +
-                                           "</body></html>").Build();
+            var finder = CreateElementFinder("<html><body>" +
+                                             "<a href=\"http://www.google.com\">google</a>" +
+                                             "</body></html>");
 
-            var document = new WebElementFinder(htmlNode);
-            var link = document.FindElement(By.XPath("//a[text()='google']"));
-
-            Assert.That(link.TagName, Is.EqualTo("a"));
-            Assert.That(link.Text, Is.EqualTo("google"));
+            var link = finder.FindElement(By.XPath("//a[text()='google']"));
+            AssertTag(link, "a", "google");
         }
 
         [Test]
         public void FindElementsByXPath()
         {
-            var htmlNode = new HtmlNodeBuilder("<html><body>" +
-                                           "<table><tr><td>foo</td><td>bar</td></tr></table>" +
-                                           "</body></html>").Build();
+            var finder = CreateElementFinder("<table><tr><td>foo</td><td>bar</td></tr></table>");
 
-            var document = new WebElementFinder(htmlNode);
-            var list = document.FindElements(By.XPath("//td"));
+            var list = finder.FindElements(By.XPath("//td"));
+            AssertTag(list, "td", 2);
+        }
 
-            Assert.That(list.Count, Is.EqualTo(2));
-            Assert.That(list[0].TagName, Is.EqualTo("td"));
-            Assert.That(list[0].Text, Is.EqualTo("foo"));
-            Assert.That(list[1].TagName, Is.EqualTo("td"));
-            Assert.That(list[1].Text, Is.EqualTo("bar"));
+        [Test]
+        public void FindElementByLinkText()
+        {
+            var finder = CreateElementFinder("<a href=\"http://www.google.com\">google</a>" +
+                                             "<a href=\"http://www.yahoo.com\">yahoo</a>" +
+                                             "<a href=\"http://www.bing.com\">bing</a>");
+
+            var link = finder.FindElement(By.LinkText("google"));
+            AssertTag(link, "a", "google");
+        }
+
+        [Test]
+        public void FindElementsByLinkText()
+        {
+            var finder = CreateElementFinder("<a href=\"http://www.google.com\">google</a>" +
+                                             "<a href=\"http://www.yahoo.com\">yahoo</a>" +
+                                             "<a href=\"http://www.google.com\">google</a>");
+
+            var links = finder.FindElements(By.LinkText("google"));
+            AssertTag(links, "a", "google", 2);
+        }
+
+        [Test]
+        public void FindElementsByLinkTextShouldOnlyMatchEntireText()
+        {
+            var finder = CreateElementFinder("<a href=\"http://www.google.com\">link to google</a>");
+
+            var link = finder.FindElement(By.LinkText("google"));
+            Assert.That(link, Is.EqualTo(null));
+        }
+
+        [Test]
+        public void FindElementByPartialLink()
+        {
+            var finder = CreateElementFinder("<a href=\"http://www.google.com\">link to google</a>");
+
+            var link = finder.FindElement(By.PartialLinkText("google"));
+            AssertTag(link, "a", "link to google");
+        }
+
+        [Test]
+        public void FindElementsByPartialLinkText()
+        {
+            var finder = CreateElementFinder("<a href=\"http://www.google.com\">link to google</a>" +
+                                             "<a href=\"http://www.yahoo.com\">link to yahoo</a>" +
+                                             "<a href=\"http://www.bing.com\">link to.. microsoft google.. I mean bing</a>");
+
+            var links = finder.FindElements(By.PartialLinkText("google"));
+            AssertTag(links, "a", 2);
+        }
+
+        private WebElementFinder CreateElementFinder(string html)
+        {
+            var htmlNode = new HtmlNodeBuilder(html).Build();
+            return new WebElementFinder(htmlNode);
+        }
+
+        private void AssertTag(IWebElement element, string tagName)
+        {
+            Assert.That(element.TagName, Is.EqualTo(tagName));
+        }
+
+        private void AssertTag(IWebElement element, string tagName, string text)
+        {
+            Assert.That(element.TagName, Is.EqualTo(tagName));
+            Assert.That(element.Text, Is.EqualTo(text));
+        }
+
+        private void AssertTag(ICollection<IWebElement> list, string expectedTagName, int expectedElements)
+        {
+            Assert.That(list.Count, Is.EqualTo(expectedElements));
+            foreach (var element in list)
+                AssertTag(element, expectedTagName);
+        }
+
+        private void AssertTag(ICollection<IWebElement> list, string expectedTagName, string expectedText, int expectedElements)
+        {
+            Assert.That(list.Count, Is.EqualTo(expectedElements));
+            foreach (var element in list)
+                AssertTag(element, expectedTagName, expectedText);
         }
     }
 }
