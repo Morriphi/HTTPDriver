@@ -49,6 +49,19 @@ namespace HTTPDriver.UnitTest
         }
 
         [Test]
+        public void FindElementShouldReturnNullIfNoElementsAreReturned()
+        {
+            var htmlNode = new HtmlNodeBuilder("<html><body>" +
+                   "<a href=\"http://www.google.com\">google</a>" +
+                   "</body></html>").Build();
+
+            var document = new WebElementFinder(htmlNode);
+            var paragraph = document.FindElement(By.TagName("p"));
+
+            Assert.That(paragraph, Is.EqualTo(null));
+        }
+
+        [Test]
         public void FindElements()
         {
             var htmlNode = new HtmlNodeBuilder("<html><body>" +
@@ -61,6 +74,20 @@ namespace HTTPDriver.UnitTest
             Assert.That(list.Count, Is.EqualTo(2));
             Assert.That(list[0].TagName, Is.EqualTo("li"));
             Assert.That(list[1].TagName, Is.EqualTo("li"));
+        }
+
+        [Test]
+        public void FindElementsShouldReturnAnEmptyListIfNoElementsAreReturned()
+        {
+            var htmlNode = new HtmlNodeBuilder("<html><body>" +
+                   "<a href=\"http://www.google.com\">google</a>" +
+                   "</body></html>").Build();
+
+            var document = new WebElementFinder(htmlNode);
+            var paragraphs = document.FindElements(By.TagName("p"));
+
+            Assert.That(paragraphs, Is.Not.EqualTo(null));
+            Assert.That(paragraphs.Count, Is.EqualTo(0));
         }
     }
 }
