@@ -28,7 +28,7 @@ namespace HTTPDriver.FunctionalTests.Helpers
                 _process.Kill();
         }
 
-        public bool ProcessRunning()
+        private bool ProcessRunning()
         {
             return _process != null;
         }

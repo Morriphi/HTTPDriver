@@ -8,16 +8,16 @@ namespace HTTPDriver.FunctionalTests.Helpers
         private const string Server = "WebDev.WebServer20.EXE";
         private const string ServerPath = @"..\..\..\lib\WebDevServer\64Bit\";
 
-        private readonly CommandLine _commandLine;
+        private readonly CommandLine _command;
 
         public TestServer(int port, Site site)
         {
             if (IsNot64Bit())
                 throw new TestWebServerOnlyRunsOn64BitMachine();
 
-            _commandLine = new CommandLine();
+            _command = new CommandLine();
 
-            _commandLine.BuildCommand(Server, ServerPath)
+            _command.BuildCommand(Server, ServerPath)
                 .With("port", port)
                 .With("path", site.PhysicalPath)
                 .With("vpath", site.VirtualPath);
@@ -28,12 +28,12 @@ namespace HTTPDriver.FunctionalTests.Helpers
             if (!File.Exists(ServerPath + Server))
                 throw new FileNotFoundException("Unable to start server: Cannot find " + Server);
 
-            _commandLine.Execute();
+            _command.Execute();
         }
 
         public void Stop()
         {
-            _commandLine.Kill();
+            _command.Kill();
         }
 
         private static bool IsNot64Bit()
