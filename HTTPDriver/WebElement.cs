@@ -51,7 +51,7 @@ namespace HTTPDriver
 
         public string Text
         {
-            get { return _element.InnerText; }
+            get { return _element.InnerText.Trim(); }
         }
 
         public bool Enabled

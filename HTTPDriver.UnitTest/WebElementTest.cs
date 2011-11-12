@@ -8,7 +8,7 @@ namespace HTTPDriver.UnitTest
         [Test] 
         public void Text()
         {
-            var htmlNode = new HtmlNodeBuilder("<div>Hello World</div>").Build();
+            var htmlNode = new HtmlNodeBuilder("<div>\r\nHello World        \r\n</div>").Build();
 
             var element = new WebElement(htmlNode);
             var textInAnElement = element.Text;
@@ -36,7 +36,7 @@ namespace HTTPDriver.UnitTest
             Assert.That(element.GetAttribute("href"), Is.EqualTo("http://www.google.com"));
         }
 
-
+        [Test]
         public void FindElement()
         {
             var htmlNode = new HtmlNodeBuilder("<html><body><div id=\"page-body\">Hello world</div></body></html>").Build();
