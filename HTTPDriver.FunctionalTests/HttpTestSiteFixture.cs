@@ -1,8 +1,9 @@
+using HTTPDriver.FunctionalTests.Helpers;
 using NUnit.Framework;
 
-namespace HTTPDriver.FunctionalTests.Helpers
+namespace HTTPDriver.FunctionalTests
 {
-    [TestFixture]
+    [SetUpFixture]
     public class HttpTestSiteFixture
     {
         private readonly TestServer _server;
@@ -12,13 +13,13 @@ namespace HTTPDriver.FunctionalTests.Helpers
             _server = new TestServer(9001, new Site(@"..\..\..\HTTPDriver.TestSite", "/TestSite"));   
         }
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void BeforeTests()
         {
             _server.Start();
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void AfterTests()
         {
             _server.Stop();

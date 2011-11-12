@@ -1,10 +1,10 @@
-﻿using HTTPDriver.FunctionalTests.Helpers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HTTPDriver.FunctionalTests
 {
-    public class NavigationTests : HttpTestSiteFixture
+    [TestFixture]
+    public class NavigationTests
     {
         private HttpDriver _driver;
 

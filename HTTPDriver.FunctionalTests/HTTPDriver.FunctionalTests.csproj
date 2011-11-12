@@ -61,9 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\HttpTestSiteFixture.cs" />
+    <Compile Include="Helpers\CommandLine.cs" />
     <Compile Include="Helpers\Site.cs" />
     <Compile Include="Helpers\TestServer.cs" />
+    <Compile Include="HttpTestSiteFixture.cs" />
     <Compile Include="NavigationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
