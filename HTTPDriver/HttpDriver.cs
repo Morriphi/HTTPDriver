@@ -60,7 +60,7 @@ namespace HTTPDriver
 
         public string Title
         {
-            get { return _webResponder.GetTitle(); }
+            get { return _webResponder.GetTitle().Trim(); }
         }
 
         public string PageSource

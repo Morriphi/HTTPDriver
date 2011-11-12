@@ -1,24 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HTTPDriver.FunctionalTests.Helpers;
 using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium;
 
 namespace HTTPDriver.FunctionalTests
 {
-    public class NavigationTests
+    public class NavigationTests : HttpTestSiteFixture
     {
+        private HttpDriver _driver;
+
+        [SetUp]
+        public void BeforeEachTest()
+        {
+            _driver = new HttpDriver(new WebRequester());
+        }
+
         [Test]
         public void ShouldBeAbleToNavigateToWebSite()
         {
-            //Given
-            var driver = new HttpDriver(new WebRequester());
+            _driver.Navigate().GoToUrl("http://localhost:9001/TestSite");
 
-            //When
-            driver.Navigate().GoToUrl("http://www.google.com");
-            //Then
-            Assert.That(driver.Title, Is.EqualTo("Google"));
+            Assert.That(_driver.Title, Is.EqualTo("Test Site"));
+        }
+
+        [Test]
+        public void ShouldBeAbleToFindElementById()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:9001/TestSite");
+
+            Assert.That(_driver.FindElement(By.Id("page-body")).TagName, Is.EqualTo("div"));
+            Assert.That(_driver.FindElement(By.Id("page-body")).Text, Is.EqualTo("Hello world"));
         }
     }
 }
