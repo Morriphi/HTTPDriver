@@ -147,7 +147,7 @@ namespace HTTPDriver.UnitTest
         private WebElementFinder CreateElementFinder(string html)
         {
             var htmlNode = new HtmlNodeBuilder(html).Build();
-            return new WebElementFinder(htmlNode);
+            return new WebElementFinder(htmlNode,null);
         }
 
         private void AssertTag(IWebElement element, string tagName)

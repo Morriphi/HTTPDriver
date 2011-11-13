@@ -14,6 +14,7 @@
             Hello world</div>
         <ul>
             <li class="nav-item">Item 1</li><li class="nav-item">Item 2</li></ul>
+        <a id="linkToAnotherPage" href="AnotherPage.aspx">Click here to follow a link.</a>
     </div>
     </form>
 </body>

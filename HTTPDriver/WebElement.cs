@@ -8,10 +8,12 @@ namespace HTTPDriver
     public class WebElement : IWebElement
     {
         private readonly HtmlNode _element;
+        private readonly INavigation _navigation;
 
-        public WebElement(HtmlNode element)
+        public WebElement(HtmlNode element, INavigation navigation)
         {
             _element = element;
+            _navigation = navigation;
         }
 
         public void Clear()
@@ -31,7 +33,11 @@ namespace HTTPDriver
 
         public void Click()
         {
-            throw new System.NotImplementedException();
+            HtmlAttribute htmlAttribute = _element.Attributes["href"];
+            if (htmlAttribute == null)
+                return;
+
+            _navigation.GoToUrl(htmlAttribute.Value);
         }
 
         public string GetAttribute(string attributeName)
@@ -81,12 +87,12 @@ namespace HTTPDriver
 
         public IWebElement FindElement(By @by)
         {
-            return by.FindElement(new WebElementFinder(_element));
+            return by.FindElement(new WebElementFinder(_element, _navigation));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            return by.FindElements(new WebElementFinder(_element));
+            return by.FindElements(new WebElementFinder(_element, _navigation));
         }
     }
 }
