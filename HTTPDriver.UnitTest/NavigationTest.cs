@@ -25,6 +25,26 @@ namespace HTTPDriver.UnitTest
         }
 
         [Test]
+        [TestCase("http://www.test.com/Default.aspx", "http://www.test.com/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/1/2",  "http://www.test.com/1/2/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/1/2/", "http://www.test.com/1/2/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com", "http://www.test.com/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/", "http://www.test.com/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/1/2/3/Default.aspx", "http://www.test.com/1/2/3/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/1/2/3/Default.aspx?id=1", "http://www.test.com/1/2/3/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/query?id=1", "http://www.test.com/Sub/RelativePage.aspx")]
+        public void GoToUrlShouldHandleRelativeUrls(string initalUrl, string expectedUrl)
+        {
+            _navigation.GoToUrl(initalUrl);
+
+            Assert.That(_driver.Url, Is.EqualTo(initalUrl));
+
+            _navigation.GoToUrl("Sub/RelativePage.aspx");
+
+            Assert.That(_driver.Url, Is.EqualTo(expectedUrl));
+        }
+
+        [Test]
         public void ShouldGoToUrlWithGivenStringUrl()
         {
             _navigation.GoToUrl(Url1);
@@ -44,7 +64,7 @@ namespace HTTPDriver.UnitTest
         [ExpectedException(typeof(UriFormatException))]
         public void InvalidUrl()
         {
-            _navigation.GoToUrl(@"www.invalidtesturl.com");
+            _navigation.GoToUrl(@"www.invalidtesturl:\\.com");
         }
 
         [Test]

@@ -7,23 +7,24 @@ namespace HTTPDriver
     {
         private readonly IWebRequester _webRequester;
         private IWebResponder _webResponder;
-
-    
+        private INavigation _navigation;
+        
         public HttpDriver(IWebRequester webRequester)
         {
             _webRequester = webRequester;
+            _navigation = new Navigation(this);
         }
 
         public IWebElement FindElement(By by)
         {
             var document = _webResponder.GetDocumentElement();
-            return by.FindElement(new WebElementFinder(document));
+            return by.FindElement(new WebElementFinder(document, Navigate()));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
             var document = _webResponder.GetDocumentElement();
-            return by.FindElements(new WebElementFinder(document));
+            return by.FindElements(new WebElementFinder(document, Navigate()));
         }
 
         public void Dispose()
@@ -48,7 +49,7 @@ namespace HTTPDriver
 
         public INavigation Navigate()
         {
-            return new Navigation(this);
+            return _navigation;
         }
 
         public ITargetLocator SwitchTo()

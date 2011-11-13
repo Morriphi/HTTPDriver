@@ -26,12 +26,21 @@ namespace HTTPDriver
            _driver.Url = _history.CurrentUrl();
         }
 
-        public void GoToUrl(string url)
+        public void GoToUrl(string uri)
         {
-            if(NotWellFormed(url))
-                throw new UriFormatException();
+            if (!Uri.IsWellFormedUriString(uri, UriKind.Absolute))
+            {
+                if (Uri.IsWellFormedUriString(uri, UriKind.Relative))
+                {
+                    uri = _history.CurrentUrl().FromRelativeUrl(uri);
+                }
+                else
+                {
+                    throw new UriFormatException();
+                }
+            }
 
-            _history.Add(url);
+            _history.Add(uri);
             _driver.Url = _history.CurrentUrl();
             _driver.SendRequest();
         }
@@ -46,9 +55,6 @@ namespace HTTPDriver
             throw new NotImplementedException();
         }
 
-        private static bool NotWellFormed(string url)
-        {
-            return !Uri.IsWellFormedUriString(url, UriKind.Absolute);
-        }
+        
     }
 }

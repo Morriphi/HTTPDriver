@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Moq;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HTTPDriver.UnitTest
@@ -10,7 +12,7 @@ namespace HTTPDriver.UnitTest
         {
             var htmlNode = new HtmlNodeBuilder("<div>\r\nHello World        \r\n</div>").Build();
 
-            var element = new WebElement(htmlNode);
+            var element = new WebElement(htmlNode, null);
             var textInAnElement = element.Text;
 
             Assert.That(textInAnElement, Is.EqualTo("Hello World"));
@@ -21,7 +23,7 @@ namespace HTTPDriver.UnitTest
         {
             var htmlNode = new HtmlNodeBuilder("<div>Hello DIV Tag</div>").Build();
 
-            var element = new WebElement(htmlNode);
+            var element = new WebElement(htmlNode, null);
 
             Assert.That(element.TagName, Is.EqualTo("div"));
         }
@@ -31,7 +33,7 @@ namespace HTTPDriver.UnitTest
         {
             var htmlNode = new HtmlNodeBuilder("<a href=\"http://www.google.com\">Google</a>").Build();
 
-            var element = new WebElement(htmlNode);
+            var element = new WebElement(htmlNode, null);
 
             Assert.That(element.GetAttribute("href"), Is.EqualTo("http://www.google.com"));
         }
@@ -41,7 +43,7 @@ namespace HTTPDriver.UnitTest
         {
             var htmlNode = new HtmlNodeBuilder("<html><body><div id=\"page-body\">Hello world</div></body></html>").Build();
 
-            var document = new WebElement(htmlNode);
+            var document = new WebElement(htmlNode, null);
             var div = document.FindElement(By.Id("page-body"));
 
             Assert.That(div.TagName, Is.EqualTo("div"));
@@ -55,7 +57,7 @@ namespace HTTPDriver.UnitTest
                    "<a href=\"http://www.google.com\">google</a>" +
                    "</body></html>").Build();
 
-            var document = new WebElementFinder(htmlNode);
+            var document = new WebElementFinder(htmlNode,null);
             var paragraph = document.FindElement(By.TagName("p"));
 
             Assert.That(paragraph, Is.EqualTo(null));
@@ -68,7 +70,7 @@ namespace HTTPDriver.UnitTest
                                            "<ul><li class=\"nav-item\">Item 1</li><li class=\"nav-item\">Item 2</li></ul>" +
                                            "</body></html>").Build();
 
-            var document = new WebElement(htmlNode);
+            var document = new WebElement(htmlNode, null);
             var list = document.FindElements(By.ClassName("nav-item"));
 
             Assert.That(list.Count, Is.EqualTo(2));
@@ -83,11 +85,38 @@ namespace HTTPDriver.UnitTest
                    "<a href=\"http://www.google.com\">google</a>" +
                    "</body></html>").Build();
 
-            var document = new WebElementFinder(htmlNode);
+            var document = new WebElementFinder(htmlNode, null);
             var paragraphs = document.FindElements(By.TagName("p"));
 
             Assert.That(paragraphs, Is.Not.EqualTo(null));
             Assert.That(paragraphs.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void ClickShouldFollowHrefs()
+        {
+            var nav = new Mock<INavigation>();
+
+            var htmlNode = new HtmlNodeBuilder("<a href=\"http://www.google.com\">google</a>").Build();
+
+            var webElement = new WebElement(htmlNode, nav.Object);
+            webElement.Click();
+
+            nav.Verify( x => x.GoToUrl(htmlNode.Attributes["href"].Value), Times.Once(), "Click() should cause INavigator to go to the url.");
+        }
+
+        [Test]
+        public void ClickShouldBeIgnoredWhenNotApplicable()
+        {
+            var nav = new Mock<INavigation>();
+
+            var htmlNode = new HtmlNodeBuilder("<div>This is not a link</div>").Build();
+
+            var webElement = new WebElement(htmlNode, nav.Object);
+            webElement.Click();
+        
+            nav.Verify(x => x.GoToUrl(It.IsAny<string>()), Times.Never(),
+                "Click should not do anything when not applied to a link.");
         }
     }
 }
