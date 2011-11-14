@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HTTPDriver.TestSite
 {
@@ -11,7 +7,19 @@ namespace HTTPDriver.TestSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cookies.Add(TestCookie("Chocolate"));
+            Response.Cookies.Add(TestCookie("Rasin"));
+            Response.Cookies.Add(TestCookie("Oatmeal"));
+        }
 
+        private static HttpCookie TestCookie(string name)
+        {
+            var httpCookie = new HttpCookie(name);
+            httpCookie.Values.Add("TestValue1", "Value1");
+            httpCookie.Values.Add("TestValue2", "Value2");
+            httpCookie.Values.Add("TestValue3", "Value3");
+            httpCookie.Expires = DateTime.Now.AddHours(1);
+            return httpCookie;
         }
     }
 }

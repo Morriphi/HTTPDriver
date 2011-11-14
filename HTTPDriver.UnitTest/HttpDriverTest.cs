@@ -40,7 +40,7 @@ namespace HTTPDriver.UnitTest
         [Test]
         public void Title()
         {
-            _webRequester.AddTestResponseString(Url1, new HtmlParser("<html><title>Test Title</title></html>"));
+            _webRequester.AddTestResponseString(Url1, new HtmlParser("<html><title>\r\nTest Title\r\n</title></html>"));
             _webRequester.AddTestResponseString(Url2, new HtmlParser("<html><title>Another Test Title</title></html>"));
             _webRequester.AddTestResponseString(Url3, new HtmlParser("<html></html>"));
 

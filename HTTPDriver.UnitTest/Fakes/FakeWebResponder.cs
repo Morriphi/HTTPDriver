@@ -1,4 +1,6 @@
-﻿using HtmlAgilityPack;
+﻿using System.Collections.Generic;
+using HtmlAgilityPack;
+using OpenQA.Selenium;
 
 namespace HTTPDriver.UnitTest.Fakes
 {
@@ -25,6 +27,11 @@ namespace HTTPDriver.UnitTest.Fakes
         {
             var htmlBuilder = new HtmlNodeBuilder(GetPageSource());
             return htmlBuilder.Build();
+        }
+
+        public IEnumerable<Cookie> GetCookies()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

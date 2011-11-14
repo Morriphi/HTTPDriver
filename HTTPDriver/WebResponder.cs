@@ -7,7 +7,7 @@ namespace HTTPDriver
 {
     public class WebResponder : IWebResponder
     {
-        private HtmlDocument _documentNode = new HtmlDocument();
+        private readonly HtmlDocument _documentNode = new HtmlDocument();
 
         public WebResponder(WebResponse response)
         {
@@ -20,8 +20,6 @@ namespace HTTPDriver
                 throw new ArgumentNullException();
             
             CreateDocumentNode(responseStream);
-
-
         }
 
         private void CreateDocumentNode(Stream responseStream)

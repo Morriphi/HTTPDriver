@@ -68,6 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cookies\CookieJarTest.cs" />
+    <Compile Include="Cookies\CookieExtensionsTest.cs" />
     <Compile Include="Fakes\NavigationFakeWebRequester.cs" />
     <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
