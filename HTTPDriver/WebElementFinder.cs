@@ -12,10 +12,12 @@ namespace HTTPDriver
     public class WebElementFinder : IFindsById, IFindsByClassName, IFindsByTagName, IFindsByCssSelector, IFindsByXPath, IFindsByLinkText, IFindsByPartialLinkText, ISearchContext
     {
         private readonly HtmlNode _element;
+        private readonly INavigation _navigation;
 
-        public WebElementFinder(HtmlNode element)
+        public WebElementFinder(HtmlNode element, INavigation navigation)
         {
             _element = element;
+            _navigation = navigation;
         }
 
         public IWebElement FindElement(By @by)
@@ -86,7 +88,7 @@ namespace HTTPDriver
                 return new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 
             var webElements = (from match in nodes.Cast<HtmlNode>()
-                               select new WebElement(match) as IWebElement).ToList();
+                               select new WebElement(match, _navigation) as IWebElement).ToList();
             return new ReadOnlyCollection<IWebElement>(webElements);
         }
 

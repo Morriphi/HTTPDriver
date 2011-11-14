@@ -38,5 +38,21 @@ namespace HTTPDriver.FunctionalTests
 
             Assert.That(_driver.FindElements(By.ClassName("nav-item")).Count, Is.EqualTo(2));
         }
+
+        [Test]
+        public void ShouldBeAbleToFollowSimpleHyperlink()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:9001/TestSite");
+
+            IWebElement hyperlink = _driver.FindElement(By.CssSelector("#linkToAnotherPage"));
+
+            hyperlink.Click();
+
+            Assert.That(_driver.Url, Is.EqualTo("http://localhost:9001/TestSite/AnotherPage.aspx"));
+
+            IWebElement element = _driver.FindElement(By.CssSelector("#page-body"));
+
+            Assert.That(element.Text, Is.EqualTo("This is another page."));
+        }
     }
 }
