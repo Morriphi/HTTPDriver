@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using HTTPDriver.Browser;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HTTPDriver.FunctionalTests

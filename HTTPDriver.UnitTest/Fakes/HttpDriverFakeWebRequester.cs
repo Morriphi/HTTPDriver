@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HTTPDriver.Browser;
 
 namespace HTTPDriver.UnitTest.Fakes
 {
@@ -11,7 +12,12 @@ namespace HTTPDriver.UnitTest.Fakes
             _responses.Add(url, pageContent);
         }
 
-        public IWebResponder Request(string url)
+        public void AddTestResponseString(string url, string pageContent)
+        {
+            _responses.Add(url, new HtmlParser(pageContent));
+        }
+
+        public IWebResponder Get(string url)
         {
             return new FakeWebResponder(_responses[url]);
         }

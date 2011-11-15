@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using HTTPDriver.Browser;
+using HtmlAgilityPack;
 using OpenQA.Selenium;
 
 namespace HTTPDriver
@@ -6,9 +8,9 @@ namespace HTTPDriver
     public class HttpDriver : IWebDriver
     {
         private readonly IWebRequester _webRequester;
-        private IWebResponder _webResponder;
         private INavigation _navigation;
-        
+        private HtmlNode _page;
+
         public HttpDriver(IWebRequester webRequester)
         {
             _webRequester = webRequester;
@@ -17,19 +19,16 @@ namespace HTTPDriver
 
         public IWebElement FindElement(By by)
         {
-            var document = _webResponder.GetDocumentElement();
-            return by.FindElement(new WebElementFinder(document, Navigate()));
+            return by.FindElement(new WebElementFinder(_page, Navigate()));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            var document = _webResponder.GetDocumentElement();
-            return by.FindElements(new WebElementFinder(document, Navigate()));
+            return by.FindElements(new WebElementFinder(_page, Navigate()));
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Close()
@@ -61,12 +60,19 @@ namespace HTTPDriver
 
         public string Title
         {
-            get { return _webResponder.GetTitle().Trim(); }
+            get
+            {
+                // TODO: we should wrap this up in a document object
+                var title = _page.SelectSingleNode("//title");
+                if(title != null)
+                    return title.Text();
+                return "";
+            }
         }
 
         public string PageSource
         {
-            get { return _webResponder.GetPageSource(); }
+            get { return _page.OuterHtml; }
         }
 
         public string CurrentWindowHandle
@@ -81,7 +87,7 @@ namespace HTTPDriver
 
         public void SendRequest()
         {
-            _webResponder = _webRequester.Request(Url);
+            _page = _webRequester.Get(Url).Page;
         }
     }
 }
