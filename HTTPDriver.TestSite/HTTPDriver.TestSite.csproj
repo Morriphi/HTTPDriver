@@ -49,6 +49,9 @@
   <ItemGroup>
     <Content Include="AnotherPage.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Forms\post-data.aspx" />
+    <Content Include="Forms\simple-post-result.html" />
+    <Content Include="Forms\simple-post.html" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -75,6 +78,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\post-data.aspx.cs">
+      <DependentUpon>post-data.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\post-data.aspx.designer.cs">
+      <DependentUpon>post-data.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,8 +98,8 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58518</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <DevelopmentServerPort>9001</DevelopmentServerPort>
+          <DevelopmentServerVPath>/TestSite</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

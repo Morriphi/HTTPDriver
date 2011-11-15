@@ -3,6 +3,7 @@ using System.Drawing;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
 
+// test
 namespace HTTPDriver
 {
     public class WebElement : IWebElement
@@ -33,16 +34,19 @@ namespace HTTPDriver
 
         public void Click()
         {
+<<<<<<< Updated upstream
             HtmlAttribute htmlAttribute = _element.Attributes["href"];
             if (htmlAttribute == null)
                 return;
 
             _navigation.GoToUrl(htmlAttribute.Value);
-			
+=======
+            // First pass at the form submission logic - keeping it simple
             if(_element.Name == "input" && _element.Attributes["type"].Value == "submit")
             {
                 // submit the form
             }
+>>>>>>> Stashed changes
         }
 
         public string GetAttribute(string attributeName)
@@ -62,12 +66,12 @@ namespace HTTPDriver
 
         public IWebElement FindElement(By @by)
         {
-            return by.FindElement(new WebElementFinder(_element, _navigation));
+            return by.FindElement(new WebElementFinder(_element));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            return by.FindElements(new WebElementFinder(_element, _navigation));
+            return by.FindElements(new WebElementFinder(_element));
         }
 
         #region client-side related things we don't intend to implement
@@ -100,6 +104,19 @@ namespace HTTPDriver
         {
             get { throw new System.NotImplementedException(); }
         }
+<<<<<<< Updated upstream
+
+        public IWebElement FindElement(By @by)
+        {
+            return by.FindElement(new WebElementFinder(_element, _navigation));
+        }
+
+        public ReadOnlyCollection<IWebElement> FindElements(By @by)
+        {
+            return by.FindElements(new WebElementFinder(_element, _navigation));
+        }
+=======
         #endregion
+>>>>>>> Stashed changes
     }
 }

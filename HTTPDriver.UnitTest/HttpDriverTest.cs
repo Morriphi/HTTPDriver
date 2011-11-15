@@ -1,4 +1,5 @@
-﻿using HTTPDriver.UnitTest.Fakes;
+﻿using HTTPDriver.Browser.UnitTest;
+using HTTPDriver.UnitTest.Fakes;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -65,11 +66,10 @@ namespace HTTPDriver.UnitTest
             _webRequester.AddTestResponseString(Url1, new HtmlParser(originalPageSouce));
 
             //When
-            _driver.Navigate().GoToUrl(Url1);            
-            var pageSource = _driver.PageSource;
+            _driver.Navigate().GoToUrl(Url1);
 
             //Then
-            Assert.That(pageSource,Is.EqualTo(originalPageSouce));
+            Assert.That(_driver.PageSource, Is.EqualTo(originalPageSouce));
         }
 
         [Test]

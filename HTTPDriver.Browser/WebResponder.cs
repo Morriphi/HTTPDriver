@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using HtmlAgilityPack;
 
-namespace HTTPDriver
+namespace HTTPDriver.Browser
 {
     public class WebResponder : IWebResponder
     {
@@ -32,18 +32,21 @@ namespace HTTPDriver
             return _documentNode.DocumentNode.SelectSingleNode("//title").InnerText;
         }
 
-        public string GetPageSource()
+        public string PageSource
         {
-            using (var stringWriter = new StringWriter())
+            get
             {
-                _documentNode.Save(stringWriter);
-                return stringWriter.ToString();
+                using (var stringWriter = new StringWriter())
+                {
+                    _documentNode.Save(stringWriter);
+                    return stringWriter.ToString();
+                }
             }
         }
 
-        public HtmlNode GetDocumentElement()
+        public HtmlNode Page
         {
-            return _documentNode.DocumentNode;
+            get { return _documentNode.DocumentNode; }
         }
     }
 }

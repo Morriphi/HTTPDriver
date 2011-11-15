@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EDA99C1E-BED1-4E18-B0E8-01152A8A0B78}</ProjectGuid>
+    <ProjectGuid>{787F5096-26CA-44F8-A527-6B7177B818F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HTTPDriver</RootNamespace>
-    <AssemblyName>HTTPDriver</AssemblyName>
+    <RootNamespace>HTTPDriver.Browser</RootNamespace>
+    <AssemblyName>HTTPDriver.Browser</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -32,54 +32,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fizzler">
-      <HintPath>..\lib\fizzler-0.9\Fizzler.dll</HintPath>
-    </Reference>
-    <Reference Include="Fizzler.Systems.HtmlAgilityPack">
-      <HintPath>..\lib\fizzler-0.9\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="HtmlAgilityPack">
       <HintPath>..\lib\fizzler-0.9\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\lib\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\lib\Newtonsoft.Json.4.0.2\lib\net35\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver, Version=2.12.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Selenium.WebDriver.2.12.0\lib\net35\WebDriver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cookies\CookieJar.cs" />
-    <Compile Include="Cookies\CookieParser.cs" />
-    <Compile Include="History.cs" />
-    <Compile Include="HtmlParser.cs" />
-    <Compile Include="HttpDriver.cs" />
-    <Compile Include="Navigation.cs" />
+    <Compile Include="BrowserEngine.cs" />
+    <Compile Include="HtmlNodeExtensions.cs" />
+    <Compile Include="IWebRequester.cs" />
+    <Compile Include="IWebResponder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UrlExtenstions.cs" />
-    <Compile Include="WebElement.cs" />
-    <Compile Include="WebElementFinder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HTTPDriver.Browser\HTTPDriver.Browser.csproj">
-      <Project>{787F5096-26CA-44F8-A527-6B7177B818F8}</Project>
-      <Name>HTTPDriver.Browser</Name>
-    </ProjectReference>
+    <Compile Include="WebRequester.cs" />
+    <Compile Include="WebResponder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
