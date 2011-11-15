@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HTTPDriver.Browser.UnitTest;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -14,6 +15,19 @@ namespace HTTPDriver.UnitTest
 
             var div = finder.FindElement(By.Id("page-body"));
             AssertTag(div, "div", "Hello world");
+        }
+
+        [Test]
+        public void FindElementsById()
+        {
+            // this isn't really valid, right?
+            var finder = CreateElementFinder("<html><body>" +
+                                             "<div id=\"page-body\">Hello world</div>>" +
+                                             "<div id=\"page-body\">Hello world</div>" +
+                                             "</body></html>");
+
+            var divs = finder.FindElements(By.Id("page-body"));
+            AssertTag(divs, "div", 2);
         }
 
         [Test]

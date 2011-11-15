@@ -73,8 +73,8 @@
     <Compile Include="Fakes\NavigationFakeWebRequester.cs" />
     <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
+    <Compile Include="Forms\FormPostDataReader.cs" />
     <Compile Include="HistoryTest.cs" />
-    <Compile Include="HtmlNodeBuilder.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="HttpDriverTest.cs" />
     <Compile Include="NavigationTest.cs" />
@@ -83,13 +83,21 @@
     <Compile Include="WebElementTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HTTPDriver.Browser.UnitTest\HTTPDriver.Browser.UnitTest.csproj">
+      <Project>{0134CD26-3ADC-4847-92DA-B35BB76E3DAA}</Project>
+      <Name>HTTPDriver.Browser.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HTTPDriver.Browser\HTTPDriver.Browser.csproj">
+      <Project>{787F5096-26CA-44F8-A527-6B7177B818F8}</Project>
+      <Name>HTTPDriver.Browser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HTTPDriver\HTTPDriver.csproj">
       <Project>{EDA99C1E-BED1-4E18-B0E8-01152A8A0B78}</Project>
       <Name>HTTPDriver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

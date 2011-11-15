@@ -32,12 +32,12 @@ namespace HTTPDriver
 
         public IWebElement FindElementById(string id)
         {
-            return FindElementByXPath("//*[@id='" + id + "']");
+            return FindElementsById(id).FirstOrDefault();
         }
 
         public ReadOnlyCollection<IWebElement> FindElementsById(string id)
         {
-            throw new System.NotImplementedException();
+            return FindElementsByXPath("//*[@id='" + id + "']");
         }
 
         public IWebElement FindElementByClassName(string className)

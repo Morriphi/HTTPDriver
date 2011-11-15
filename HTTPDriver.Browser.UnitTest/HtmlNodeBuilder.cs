@@ -1,6 +1,6 @@
-﻿using HtmlAgilityPack;
+using HtmlAgilityPack;
 
-namespace HTTPDriver.UnitTest
+namespace HTTPDriver.Browser.UnitTest
 {
     public class HtmlNodeBuilder
     {

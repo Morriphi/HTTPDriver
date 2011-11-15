@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using HTTPDriver.Browser;
+using HTTPDriver.Browser.UnitTest;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
 
@@ -13,20 +15,18 @@ namespace HTTPDriver.UnitTest.Fakes
             _htmlParser = htmlParser;
         }
 
-        public string GetTitle()
+        public string PageSource
         {
-            return _htmlParser.GetTitle();
+            get { return _htmlParser.GetSourceCode(); }
         }
 
-        public string GetPageSource()
+        public HtmlNode Page
         {
-            return _htmlParser.GetSourceCode();
-        }
-
-        public HtmlNode GetDocumentElement()
-        {
-            var htmlBuilder = new HtmlNodeBuilder(GetPageSource());
-            return htmlBuilder.Build();
+            get
+            {
+                var htmlBuilder = new HtmlNodeBuilder(PageSource);
+                return htmlBuilder.Build();
+            }
         }
 
         public IEnumerable<Cookie> GetCookies()

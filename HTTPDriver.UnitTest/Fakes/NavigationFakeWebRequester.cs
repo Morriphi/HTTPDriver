@@ -1,8 +1,9 @@
+using HTTPDriver.Browser;
 namespace HTTPDriver.UnitTest.Fakes
 {
     public class NavigationFakeWebRequester : IWebRequester
     {
-        public IWebResponder Request(string url)
+        public IWebResponder Get(string url)
         {
             return new FakeWebResponder(new HtmlParser(""));
         }
