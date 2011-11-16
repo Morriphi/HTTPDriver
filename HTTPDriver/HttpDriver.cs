@@ -1,33 +1,31 @@
 using System.Collections.ObjectModel;
 using System.Net;
 using HTTPDriver.Browser;
-using HtmlAgilityPack;
 using OpenQA.Selenium;
 
 namespace HTTPDriver
 {
     public class HttpDriver : IWebDriver
     {
-        private readonly IWebRequester _webRequester;
-        private INavigation _navigation;
-        private HtmlNode _page;
+        private readonly BrowserEngine _engine;
+        private readonly INavigation _navigation;
 
-        public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get { return _engine.ResponseStatusCode; } }
 
         public HttpDriver(IWebRequester webRequester)
         {
-            _webRequester = webRequester;
+            _engine = new BrowserEngine(webRequester);
             _navigation = new Navigation(this);
         }
 
         public IWebElement FindElement(By by)
         {
-            return by.FindElement(new WebElementFinder(_page, Navigate()));
+            return by.FindElement(new WebElementFinder(_engine.Page, Navigate()));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            return by.FindElements(new WebElementFinder(_page, Navigate()));
+            return by.FindElements(new WebElementFinder(_engine.Page, Navigate()));
         }
 
         public void Dispose()
@@ -66,7 +64,7 @@ namespace HTTPDriver
             get
             {
                 // TODO: we should wrap this up in a document object
-                var title = _page.SelectSingleNode("//title");
+                var title = _engine.Page.SelectSingleNode("//title");
                 if(title != null)
                     return title.Text();
                 return "";
@@ -75,7 +73,7 @@ namespace HTTPDriver
 
         public string PageSource
         {
-            get { return _page.OuterHtml; }
+            get { return _engine.Page.OuterHtml; }
         }
 
         public string CurrentWindowHandle
@@ -89,12 +87,8 @@ namespace HTTPDriver
         }
 
         public void SendRequest()
-        {
-            
-            var response=_webRequester.Get(Url);
-
-            _page = response.Page;
-            StatusCode = response.StatusCode;
+        {  
+            _engine.Load(Url);
         }
     }
 }
