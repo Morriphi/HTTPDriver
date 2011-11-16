@@ -20,12 +20,12 @@ namespace HTTPDriver
 
         public IWebElement FindElement(By by)
         {
-            return by.FindElement(new WebElementFinder(_engine.Page, Navigate()));
+            return by.FindElement(new WebElementFinder(_engine.Page.HtmlNode(), Navigate()));
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By @by)
         {
-            return by.FindElements(new WebElementFinder(_engine.Page, Navigate()));
+            return by.FindElements(new WebElementFinder(_engine.Page.HtmlNode(), Navigate()));
         }
 
         public void Dispose()
@@ -63,17 +63,18 @@ namespace HTTPDriver
         {
             get
             {
-                // TODO: we should wrap this up in a document object
-                var title = _engine.Page.SelectSingleNode("//title");
-                if(title != null)
-                    return title.Text();
-                return "";
+                return _engine.Page.Title();
             }
         }
 
         public string PageSource
         {
-            get { return _engine.Page.OuterHtml; }
+            get { return _engine.Page.Html(); }
+        }
+
+        public void SendRequest()
+        {  
+            _engine.Load(Url);
         }
 
         public string CurrentWindowHandle
@@ -84,11 +85,6 @@ namespace HTTPDriver
         public ReadOnlyCollection<string> WindowHandles
         {
             get { throw new System.NotImplementedException(); }
-        }
-
-        public void SendRequest()
-        {  
-            _engine.Load(Url);
         }
     }
 }
