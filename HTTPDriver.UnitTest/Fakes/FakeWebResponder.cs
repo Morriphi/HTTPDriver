@@ -35,6 +35,11 @@ namespace HTTPDriver.UnitTest.Fakes
             get { return HttpStatusCode.OK; }
         }
 
+        public WebHeaderCollection Headers
+        {
+            get { return null; }
+        }
+
         public IEnumerable<Cookie> GetCookies()
         {
             throw new System.NotImplementedException();

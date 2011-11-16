@@ -19,6 +19,7 @@ namespace HTTPDriver.Browser
             Location = new Uri(location);
             Page = new Page(webResponder.Page);
             ResponseStatusCode = webResponder.StatusCode;
+            Headers = webResponder.Headers;
         }
 
         public Uri Location { get; private set; }
@@ -26,5 +27,7 @@ namespace HTTPDriver.Browser
         public Page Page { get; private set; }
 
         public HttpStatusCode ResponseStatusCode { get; private set; }
+
+        public WebHeaderCollection Headers { get; private set; }
     }
 }

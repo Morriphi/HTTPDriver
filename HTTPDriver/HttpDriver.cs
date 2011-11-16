@@ -10,6 +10,7 @@ namespace HTTPDriver
         private readonly BrowserEngine _engine;
         private readonly INavigation _navigation;
 
+        public WebHeaderCollection Headers { get { return _engine.Headers; } }
         public HttpStatusCode StatusCode { get { return _engine.ResponseStatusCode; } }
 
         public HttpDriver(IWebRequester webRequester)

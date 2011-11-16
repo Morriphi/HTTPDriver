@@ -18,7 +18,8 @@ namespace HTTPDriver.FunctionalTests
             driver.Navigate().GoToUrl("http://localhost:9001/TestSite/TemporaryRedirectToAnotherPage.aspx");
 
             Assert.That(driver.StatusCode, Is.EqualTo(HttpStatusCode.Found)); 
-            Assert.That(driver.Title, Is.EqualTo("Object moved"));            
+            Assert.That(driver.Title, Is.EqualTo("Object moved"));
+            Assert.That(driver.Headers[HttpResponseHeader.Location], Is.EqualTo("/TestSite/AnotherPage.aspx"));
         }
 
         [Test]
@@ -30,6 +31,7 @@ namespace HTTPDriver.FunctionalTests
             driver.Navigate().GoToUrl("http://localhost:9001/TestSite/PermanentRedirectToAnotherPage.aspx");
 
             Assert.That(driver.StatusCode, Is.EqualTo(HttpStatusCode.MovedPermanently));
+            Assert.That(driver.Headers[HttpResponseHeader.Location], Is.EqualTo("/TestSite/AnotherPage.aspx"));
         }
 
         [Test]
@@ -54,6 +56,7 @@ namespace HTTPDriver.FunctionalTests
 
             Assert.That(driver.StatusCode, Is.EqualTo(HttpStatusCode.OK));
             Assert.That(driver.Title, Is.EqualTo("Another Page"));
+
         }
     }
 }

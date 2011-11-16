@@ -7,5 +7,6 @@ namespace HTTPDriver.Browser
     {
         HtmlNode Page { get; }
         HttpStatusCode StatusCode { get; }
+        WebHeaderCollection Headers { get; }
     }
 }

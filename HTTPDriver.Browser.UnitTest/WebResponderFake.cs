@@ -21,5 +21,10 @@ namespace HTTPDriver.Browser.UnitTest
         {
             get { return HttpStatusCode.OK; }
         }
+
+        public WebHeaderCollection Headers
+        {
+            get { return null; }
+        }
     }
 }
