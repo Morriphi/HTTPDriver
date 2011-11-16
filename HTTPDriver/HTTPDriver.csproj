@@ -61,8 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cookies\CookieJar.cs" />
-    <Compile Include="Cookies\CookieParser.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HtmlParser.cs" />
     <Compile Include="HttpDriver.cs" />
