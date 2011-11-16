@@ -8,13 +8,22 @@ namespace HTTPDriver.Browser
     public class WebResponder : IWebResponder
     {
         private readonly HtmlDocument _documentNode = new HtmlDocument();
+        
 
         public WebResponder(WebResponse response)
         {
-            if(response==null)
+            if (response == null)
                 throw new ArgumentNullException();
-            
-            var responseStream = response.GetResponseStream();
+
+            var httpWebResponse = response as HttpWebResponse;
+
+            StatusCode = httpWebResponse.StatusCode;
+
+
+            if (httpWebResponse == null)
+                throw new NotAnHttpWebResponseException();           
+
+            var responseStream = httpWebResponse.GetResponseStream();
 
             if(responseStream==null)
                 throw new ArgumentNullException();
@@ -22,8 +31,11 @@ namespace HTTPDriver.Browser
             CreateDocumentNode(responseStream);
         }
 
+        public HttpStatusCode StatusCode { get; private set; }
+
         private void CreateDocumentNode(Stream responseStream)
         {
+            
             _documentNode.Load(responseStream);
         }
         
@@ -48,5 +60,9 @@ namespace HTTPDriver.Browser
         {
             get { return _documentNode.DocumentNode; }
         }
+    }
+
+    public class NotAnHttpWebResponseException : Exception
+    {
     }
 }

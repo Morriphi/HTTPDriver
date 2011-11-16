@@ -8,16 +8,24 @@ namespace HTTPDriver.Browser
     public class WebRequester : IWebRequester
     {
         private HttpWebRequest _request;
+        private bool _shouldFollowRedirects=true;
+
+
+        public WebRequester AutomaticallyFollowRedirects(bool shouldFollowRedirects)
+        {
+            _shouldFollowRedirects = shouldFollowRedirects;
+            return this;
+        }
         
         public IWebResponder Get(string url)
         {
-            _request = (HttpWebRequest)WebRequest.Create(url);
+            Create(url);
             return new WebResponder(_request.GetResponse());
         }
 
         public IWebResponder Post(string url, IDictionary<string, string>  postdata)
         {
-            _request = (HttpWebRequest)WebRequest.Create(url);
+            Create(url);
             _request.Method = "post";
             _request.ContentType = "application/x-www-form-urlencoded";
 
@@ -28,6 +36,12 @@ namespace HTTPDriver.Browser
             stream.Close();
 
             return new WebResponder(_request.GetResponse());
+        }
+
+        private void Create(string url)
+        {
+            _request = (HttpWebRequest) WebRequest.Create(url);
+            _request.AllowAutoRedirect = _shouldFollowRedirects;
         }
 
         private string CreatePostDataString(IDictionary<string, string> postdata)

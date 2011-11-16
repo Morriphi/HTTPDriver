@@ -13,6 +13,7 @@
     <RootNamespace>HTTPDriver.TestSite</RootNamespace>
     <AssemblyName>HTTPDriver.TestSite</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,9 +53,11 @@
     <Content Include="Forms\post-data.aspx" />
     <Content Include="Forms\simple-post-result.html" />
     <Content Include="Forms\simple-post.html" />
+    <Content Include="PermanentRedirectToAnotherPage.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TemporaryRedirectToAnotherPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -85,7 +88,21 @@
     <Compile Include="Forms\post-data.aspx.designer.cs">
       <DependentUpon>post-data.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PermanentRedirectToAnotherPage.aspx.cs">
+      <DependentUpon>PermanentRedirectToAnotherPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermanentRedirectToAnotherPage.aspx.designer.cs">
+      <DependentUpon>PermanentRedirectToAnotherPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemporaryRedirectToAnotherPage.aspx.cs">
+      <DependentUpon>TemporaryRedirectToAnotherPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemporaryRedirectToAnotherPage.aspx.designer.cs">
+      <DependentUpon>TemporaryRedirectToAnotherPage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

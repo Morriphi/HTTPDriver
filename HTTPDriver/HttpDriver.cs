@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Net;
 using HTTPDriver.Browser;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
@@ -10,6 +11,8 @@ namespace HTTPDriver
         private readonly IWebRequester _webRequester;
         private INavigation _navigation;
         private HtmlNode _page;
+
+        public HttpStatusCode StatusCode { get; private set; }
 
         public HttpDriver(IWebRequester webRequester)
         {
@@ -87,7 +90,11 @@ namespace HTTPDriver
 
         public void SendRequest()
         {
-            _page = _webRequester.Get(Url).Page;
+            
+            var response=_webRequester.Get(Url);
+
+            _page = response.Page;
+            StatusCode = response.StatusCode;
         }
     }
 }

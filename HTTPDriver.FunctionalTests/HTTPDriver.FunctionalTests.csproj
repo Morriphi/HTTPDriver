@@ -72,6 +72,7 @@
     <Compile Include="NavigationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Http\WebRequesterTests.cs" />
+    <Compile Include="RedirectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

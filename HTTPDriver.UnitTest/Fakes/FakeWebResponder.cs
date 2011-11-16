@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using HTTPDriver.Browser;
 using HTTPDriver.Browser.UnitTest;
 using HtmlAgilityPack;
-using OpenQA.Selenium;
+using Cookie = OpenQA.Selenium.Cookie;
 
 namespace HTTPDriver.UnitTest.Fakes
 {
@@ -27,6 +28,11 @@ namespace HTTPDriver.UnitTest.Fakes
                 var htmlBuilder = new HtmlNodeBuilder(PageSource);
                 return htmlBuilder.Build();
             }
+        }
+
+        public HttpStatusCode StatusCode
+        {
+            get { return HttpStatusCode.OK; }
         }
 
         public IEnumerable<Cookie> GetCookies()

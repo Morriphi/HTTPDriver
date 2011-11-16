@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using HtmlAgilityPack;
 
 namespace HTTPDriver.Browser.UnitTest
@@ -15,6 +16,11 @@ namespace HTTPDriver.Browser.UnitTest
         public HtmlNode Page
         {
             get { return _document; }
+        }
+
+        public HttpStatusCode StatusCode
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

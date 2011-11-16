@@ -4,3 +4,4 @@ _ReSharper.*
 *.suo
 *.csproj.user
 *.ReSharper.user
+*.dotCover
