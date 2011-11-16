@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="History.cs" />
-    <Compile Include="HtmlParser.cs" />
     <Compile Include="HttpDriver.cs" />
     <Compile Include="Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
