@@ -9,16 +9,16 @@ namespace HTTPDriver.UnitTest.Fakes
 {
     public class FakeWebResponder : IWebResponder
     {
-        private readonly HtmlParser _htmlParser;
+        private readonly string _htmlParser;
 
-        public FakeWebResponder(HtmlParser htmlParser)
+        public FakeWebResponder(string htmlParser)
         {
             _htmlParser = htmlParser;
         }
 
         public string PageSource
         {
-            get { return _htmlParser.GetSourceCode(); }
+            get { return _htmlParser; }
         }
 
         public HtmlNode Page

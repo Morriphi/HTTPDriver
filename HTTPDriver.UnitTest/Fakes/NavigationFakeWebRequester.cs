@@ -5,7 +5,7 @@ namespace HTTPDriver.UnitTest.Fakes
     {
         public IWebResponder Get(string url)
         {
-            return new FakeWebResponder(new HtmlParser(""));
+            return new FakeWebResponder("");
         }
     }
 }

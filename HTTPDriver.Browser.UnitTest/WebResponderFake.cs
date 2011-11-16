@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using HtmlAgilityPack;
 
 namespace HTTPDriver.Browser.UnitTest
@@ -20,7 +19,7 @@ namespace HTTPDriver.Browser.UnitTest
 
         public HttpStatusCode StatusCode
         {
-            get { throw new NotImplementedException(); }
+            get { return HttpStatusCode.OK; }
         }
     }
 }

@@ -41,9 +41,9 @@ namespace HTTPDriver.UnitTest
         [Test]
         public void Title()
         {
-            _webRequester.AddTestResponseString(Url1, new HtmlParser("<html><title>\r\nTest Title\r\n</title></html>"));
-            _webRequester.AddTestResponseString(Url2, new HtmlParser("<html><title>Another Test Title</title></html>"));
-            _webRequester.AddTestResponseString(Url3, new HtmlParser("<html></html>"));
+            _webRequester.AddTestResponseString(Url1, "<html><title>\r\nTest Title\r\n</title></html>");
+            _webRequester.AddTestResponseString(Url2, "<html><title>Another Test Title</title></html>");
+            _webRequester.AddTestResponseString(Url3, "<html></html>");
 
             _driver.Navigate().GoToUrl(Url1);
 
@@ -63,7 +63,7 @@ namespace HTTPDriver.UnitTest
         {
             //Given
             var originalPageSouce = "<html><title>Test Title</title></html>";
-            _webRequester.AddTestResponseString(Url1, new HtmlParser(originalPageSouce));
+            _webRequester.AddTestResponseString(Url1, originalPageSouce);
 
             //When
             _driver.Navigate().GoToUrl(Url1);
@@ -76,7 +76,7 @@ namespace HTTPDriver.UnitTest
         public void Url()
         {
             //Given
-            _webRequester.AddTestResponseString(TotaljobsUrl, new HtmlParser("<html><title>Page 1</title></html>"));
+            _webRequester.AddTestResponseString(TotaljobsUrl, "<html><title>Page 1</title></html>");
             //When
             _driver.Navigate().GoToUrl(TotaljobsUrl);
 
@@ -88,7 +88,7 @@ namespace HTTPDriver.UnitTest
         public void FindElement()
         {
             //Given
-            _webRequester.AddTestResponseString(TotaljobsUrl, new HtmlParser("<html><title>Page 1</title><body><h1>The Header 1</h1></body></html>"));
+            _webRequester.AddTestResponseString(TotaljobsUrl, "<html><title>Page 1</title><body><h1>The Header 1</h1></body></html>");
             //When
             _driver.Navigate().GoToUrl(TotaljobsUrl);
             var foundElement = _driver.FindElement(By.TagName("h1"));

@@ -1,8 +1,7 @@
-using HTTPDriver.Cookies;
+using System.Net;
+using HTTPDriver.Browser.Cookies;
 using NUnit.Framework;
-using OpenQA.Selenium;
-
-namespace HTTPDriver.UnitTest.Cookies
+namespace HTTPDriver.Browser.UnitTest.Cookies
 {
     [TestFixture]
     public class CookieJarTest
@@ -14,12 +13,6 @@ namespace HTTPDriver.UnitTest.Cookies
         public void BeforeEachTest()
         {
             _jar = new CookieJar();
-        }
-
-        [Test]
-        public void Init()
-        {
-            Assert.That(_jar, Is.InstanceOf<ICookieJar>());
         }
 
         [Test]
@@ -40,7 +33,7 @@ namespace HTTPDriver.UnitTest.Cookies
 
             Assert.That(_jar.GetCookieNamed(_cookie.Name).Name, Is.EqualTo(_cookie.Name));
             Assert.That(_jar.GetCookieNamed(_cookie.Name).Value, Is.EqualTo(_cookie.Value));
-            Assert.That(_jar.GetCookieNamed(_cookie.Name).Expiry, Is.EqualTo(_cookie.Expiry));
+            Assert.That(_jar.GetCookieNamed(_cookie.Name).Expires, Is.EqualTo(_cookie.Expires));
             Assert.That(_jar.GetCookieNamed(_cookie.Name).Domain, Is.EqualTo(_cookie.Domain));
         }
 

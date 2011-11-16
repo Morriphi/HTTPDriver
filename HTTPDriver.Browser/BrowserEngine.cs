@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlAgilityPack;
+using System.Net;
 
 namespace HTTPDriver.Browser
 {
@@ -14,12 +14,17 @@ namespace HTTPDriver.Browser
 
         public void Load(string location)
         {
+            var webResponder = _requester.Get(location);
+
             Location = new Uri(location);
-            Page = _requester.Get(location).Page;
+            Page = new Page(webResponder.Page);
+            ResponseStatusCode = webResponder.StatusCode;
         }
 
         public Uri Location { get; private set; }
 
-        public HtmlNode Page { get; private set; }
+        public Page Page { get; private set; }
+
+        public HttpStatusCode ResponseStatusCode { get; private set; }
     }
 }

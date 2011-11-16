@@ -5,16 +5,11 @@ namespace HTTPDriver.UnitTest.Fakes
 {
     public class HttpDriverFakeWebRequester : IWebRequester
     {
-        private readonly Dictionary<string, HtmlParser> _responses = new Dictionary<string, HtmlParser>();
-
-        public void AddTestResponseString(string url, HtmlParser pageContent)
-        {
-            _responses.Add(url, pageContent);
-        }
+        private readonly Dictionary<string, string> _responses = new Dictionary<string, string>();
 
         public void AddTestResponseString(string url, string pageContent)
         {
-            _responses.Add(url, new HtmlParser(pageContent));
+            _responses.Add(url, pageContent);
         }
 
         public IWebResponder Get(string url)
