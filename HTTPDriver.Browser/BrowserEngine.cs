@@ -31,11 +31,14 @@ namespace HTTPDriver.Browser
 
         private void PopulateCookies(IWebResponder webResponder)
         {
-            bool containsSetCookieHeader = (webResponder.Headers[HttpResponseHeader.SetCookie] != null);
-            if (containsSetCookieHeader)
+            if (webResponder.Headers != null)
             {
-                var setCookieHeader = webResponder.Headers[HttpResponseHeader.SetCookie];
-                Cookies.AddCookie(CookieParser.ParseCookie(setCookieHeader));
+                bool containsSetCookieHeader = (webResponder.Headers[HttpResponseHeader.SetCookie] != null);
+                if (containsSetCookieHeader)
+                {
+                    var setCookieHeader = webResponder.Headers[HttpResponseHeader.SetCookie];
+                    Cookies.AddCookie(CookieParser.ParseCookie(setCookieHeader));
+                }
             }
         }
 
