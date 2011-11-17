@@ -10,8 +10,8 @@ namespace HTTPDriver.UnitTest
         private Navigation _navigation;
 
         private const string Url1 = @"http://www.testurl1.com/";
-        private const string Url2 = @"http://www.testurl2.com";
-        private const string Url3 = @"http://www.testurl3.com";
+        private const string Url2 = @"http://www.testurl2.com/";
+        private const string Url3 = @"http://www.testurl3.com/";
 
         private NavigationFakeWebRequester _webRequester;
 

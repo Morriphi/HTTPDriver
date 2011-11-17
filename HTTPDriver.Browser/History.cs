@@ -13,18 +13,18 @@ namespace HTTPDriver.Browser
             _urls = new LinkedList<string>();
         }
 
-        public string CurrentUrl()
+        protected internal string CurrentUrl()
         {
             return _currentUrl.Value;
         }
 
-        public void Add(string url)
+        protected internal void Add(string url)
         {
             _currentUrl = new LinkedListNode<string>(url);
             _urls.AddLast(_currentUrl);
         }
 
-        public void Back()
+        protected internal void Back()
         {
             if (HasNoPreviousUrl())
                 throw new NoPreviousUrl();
@@ -32,7 +32,7 @@ namespace HTTPDriver.Browser
             _currentUrl = _currentUrl.Previous;
         }
 
-        public void Forward()
+        protected internal void Forward()
         {
             if (HasNoNextUrl())
                 throw new NoNextUrl();
@@ -40,7 +40,7 @@ namespace HTTPDriver.Browser
             _currentUrl = _currentUrl.Next;
         }
 
-        public void SetCurrent(string url)
+        protected internal void SetCurrent(string url)
         {
             _currentUrl = _urls.Find(url);
         }

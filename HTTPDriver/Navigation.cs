@@ -7,24 +7,24 @@ namespace HTTPDriver
     public class Navigation : INavigation
     {
         private readonly HttpDriver _driver;
-        private readonly History _history;
+        private readonly BrowserEngine _engine;
 
         public Navigation(HttpDriver driver)
         {
-            _history = new History();
             _driver = driver;
+            _engine = driver.GetBrowser();
         }
 
         public void Back()
         {
-            _history.Back();
-            _driver.Url = _history.CurrentUrl();
+            _engine.Back();
+            _driver.Url = _engine.Location.ToString();
         }
 
         public void Forward()
         {
-           _history.Forward();
-           _driver.Url = _history.CurrentUrl();
+            _engine.Forward();
+            _driver.Url = _engine.Location.ToString();
         }
 
         public void GoToUrl(string uri)
@@ -33,7 +33,7 @@ namespace HTTPDriver
             {
                 if (Uri.IsWellFormedUriString(uri, UriKind.Relative))
                 {
-                    uri = _history.CurrentUrl().FromRelativeUrl(uri);
+                    uri = _engine.Location.ToString().FromRelativeUrl(uri);
                 }
                 else
                 {
@@ -41,8 +41,7 @@ namespace HTTPDriver
                 }
             }
 
-            _history.Add(uri);
-            _driver.Url = _history.CurrentUrl();
+            _driver.Url = uri;
             _driver.SendRequest();
         }
 

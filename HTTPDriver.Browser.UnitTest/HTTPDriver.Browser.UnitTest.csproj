@@ -61,7 +61,7 @@
     <Compile Include="Cookies\CookieParserTest.cs" />
     <Compile Include="CookieWebRequester.cs" />
     <Compile Include="CookieWebResponder.cs" />
-    <Compile Include="HistoryTest.cs" />
+    <Compile Include="BrowserHistoryTest.cs" />
     <Compile Include="HtmlNodeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRequesterFake.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using HTTPDriver.Browser.Cookies;
 
@@ -8,25 +7,32 @@ namespace HTTPDriver.Browser
     public class BrowserEngine
     {
         private readonly IWebRequester _requester;
+        private readonly History _history;
 
         public CookieJar Cookies { get; private set; }
 
         public BrowserEngine(IWebRequester requester)
         {
             _requester = requester;
+            _history = new History();
             Cookies = new CookieJar();
         }
 
         public void Load(string location)
         {
-            var webResponder = _requester.Get(location);
+            GoTo(location);
 
+            _history.Add(location);
+        }
+
+        private void GoTo(string location)
+        {
+            var webResponder = _requester.Get(location);
             Location = new Uri(location);
             Page = new Page(webResponder.Page);
             ResponseStatusCode = webResponder.StatusCode;
             Headers = webResponder.Headers;
             PopulateCookies(webResponder);
-            
         }
 
         private void PopulateCookies(IWebResponder webResponder)
@@ -49,5 +55,23 @@ namespace HTTPDriver.Browser
         public HttpStatusCode ResponseStatusCode { get; private set; }
 
         public WebHeaderCollection Headers { get; private set; }
+
+        public void SetCurrent(string url)
+        {
+            _history.SetCurrent(url);
+            GoTo(url);
+        }
+
+        public void Back()
+        {
+            _history.Back();
+            GoTo(_history.CurrentUrl());
+        }
+
+        public void Forward()
+        {
+            _history.Forward();
+            GoTo(_history.CurrentUrl());
+        }
     }
 }

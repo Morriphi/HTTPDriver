@@ -87,5 +87,10 @@ namespace HTTPDriver
         {
             get { throw new System.NotImplementedException(); }
         }
+
+        public BrowserEngine GetBrowser()
+        {
+            return _engine;
+        }
     }
 }
