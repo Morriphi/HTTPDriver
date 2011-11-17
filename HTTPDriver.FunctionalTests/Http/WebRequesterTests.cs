@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HTTPDriver.Browser;
-using HTTPDriver.FunctionalTests.Helpers;
 using HtmlAgilityPack;
 using NUnit.Framework;
 

@@ -1,6 +1,6 @@
-﻿using System.IO;
+using System.IO;
 
-namespace HTTPDriver.FunctionalTests.Helpers
+namespace HTTPDriver.TestServer
 {
     public class Site
     {

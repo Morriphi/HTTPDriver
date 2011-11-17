@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 
-namespace HTTPDriver.FunctionalTests.Helpers
+namespace HTTPDriver.TestServer
 {
     public class TestServer
     {

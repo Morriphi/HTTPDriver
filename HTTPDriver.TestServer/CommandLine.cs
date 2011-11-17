@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace HTTPDriver.FunctionalTests.Helpers
+namespace HTTPDriver.TestServer
 {
     public class CommandLine
     {

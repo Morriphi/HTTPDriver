@@ -1,7 +1,8 @@
+﻿
 using HTTPDriver.TestServer;
 using NUnit.Framework;
 
-namespace HTTPDriver.FunctionalTests
+namespace HTTPDriver.Browser.FunctionalTest
 {
     [SetUpFixture]
     public class HttpTestSiteFixture
@@ -10,7 +11,7 @@ namespace HTTPDriver.FunctionalTests
 
         public HttpTestSiteFixture()
         {
-            _server = new TestServer.TestServer(9001, new Site(@"..\..\..\HTTPDriver.TestSite", "/TestSite"));   
+            _server = new TestServer.TestServer(9001, new Site(@"..\..\..\HTTPDriver.TestSite", "/TestSite"));
         }
 
         [SetUp]
