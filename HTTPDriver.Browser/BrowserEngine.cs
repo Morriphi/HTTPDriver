@@ -8,6 +8,7 @@ namespace HTTPDriver.Browser
     {
         private readonly IWebRequester _requester;
         private readonly History _history;
+        private IWebResponder _webResponder;
 
         public CookieJar Cookies { get; private set; }
 
@@ -27,34 +28,43 @@ namespace HTTPDriver.Browser
 
         private void GoTo(string location)
         {
-            var webResponder = _requester.Get(location);
+            _webResponder = _requester.Get(location);
             Location = new Uri(location);
-            Page = new Page(webResponder.Page);
-            ResponseStatusCode = webResponder.StatusCode;
-            Headers = webResponder.Headers;
-            PopulateCookies(webResponder);
+            PopulateCookies();
         }
 
-        private void PopulateCookies(IWebResponder webResponder)
+        private void PopulateCookies()
         {
-            if (webResponder.Headers != null)
-            {
-                bool containsSetCookieHeader = (webResponder.Headers[HttpResponseHeader.SetCookie] != null);
-                if (containsSetCookieHeader)
-                {
-                    var setCookieHeader = webResponder.Headers[HttpResponseHeader.SetCookie];
-                    Cookies.AddCookie(CookieParser.ParseCookie(setCookieHeader));
-                }
-            }
+            if (ResponseHasCookie())
+                AddCookie();
+        }
+
+        private bool ResponseHasCookie()
+        {
+            return Headers != null && Headers[HttpResponseHeader.SetCookie] != null;
+        }
+
+        private void AddCookie()
+        {
+            Cookies.AddCookie(CookieParser.ParseCookie(Headers[HttpResponseHeader.SetCookie]));
         }
 
         public Uri Location { get; private set; }
 
-        public Page Page { get; private set; }
+        public Page Page 
+        {
+            get { return new Page(_webResponder.Page); }
+        }
 
-        public HttpStatusCode ResponseStatusCode { get; private set; }
+        public HttpStatusCode ResponseStatusCode
+        {
+            get { return _webResponder.StatusCode; }
+        }
 
-        public WebHeaderCollection Headers { get; private set; }
+        public WebHeaderCollection Headers 
+        {
+            get { return _webResponder.Headers; }
+        }
 
         public void SetCurrent(string url)
         {
