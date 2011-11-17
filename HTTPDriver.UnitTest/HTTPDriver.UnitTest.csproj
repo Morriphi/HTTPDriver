@@ -72,7 +72,6 @@
     <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="Forms\FormPostDataReader.cs" />
-    <Compile Include="HistoryTest.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="HttpDriverTest.cs" />
     <Compile Include="NavigationTest.cs" />

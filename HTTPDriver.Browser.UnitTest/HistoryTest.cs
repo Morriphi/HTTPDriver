@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 
-namespace HTTPDriver.UnitTest
+namespace HTTPDriver.Browser.UnitTest
 {
     [TestFixture]
     public class HistoryTest

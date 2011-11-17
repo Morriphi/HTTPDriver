@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Net;
-using System.Text.RegularExpressions;
 
 namespace HTTPDriver.Browser.Cookies
 {

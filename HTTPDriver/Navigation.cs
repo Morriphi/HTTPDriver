@@ -1,4 +1,5 @@
 ﻿using System;
+using HTTPDriver.Browser;
 using OpenQA.Selenium;
 
 namespace HTTPDriver

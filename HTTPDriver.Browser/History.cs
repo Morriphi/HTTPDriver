@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HTTPDriver
+namespace HTTPDriver.Browser
 {
     public class History
     {
