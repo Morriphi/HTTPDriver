@@ -61,8 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CookieJarWebDriver.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HttpDriver.cs" />
+    <Compile Include="Manage.cs" />
     <Compile Include="Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UrlExtenstions.cs" />

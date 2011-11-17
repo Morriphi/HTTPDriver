@@ -13,14 +13,13 @@ namespace HTTPDriver.Browser.UnitTest.Cookies
         public void BeforeEachTest()
         {
             _jar = new CookieJar();
+            _cookie = new Cookie("Chocolate", "Chip");
         }
 
         [Test]
         public void AddCookie()
         {
-            Assert.That(_jar.AllCookies.Count, Is.EqualTo(0));
-
-            _cookie = new Cookie("Chocolate", "Chip");
+            Assert.That(_jar.AllCookies.Count, Is.EqualTo(0));            
             _jar.AddCookie(_cookie);
 
             Assert.That(_jar.AllCookies.Count, Is.EqualTo(1));

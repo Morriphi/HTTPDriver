@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -5,7 +6,7 @@ using System.Net;
 
 namespace HTTPDriver.Browser.Cookies
 {
-    public class CookieJar
+    public class CookieJar : IEnumerable<Cookie>
     {
         private readonly Dictionary<string, Cookie> _cookies;
 
@@ -42,6 +43,16 @@ namespace HTTPDriver.Browser.Cookies
         public ReadOnlyCollection<Cookie> AllCookies
         {
             get { return new ReadOnlyCollection<Cookie>(_cookies.Values.ToList()); }
+        }
+
+        public IEnumerator<Cookie> GetEnumerator()
+        {
+            return _cookies.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

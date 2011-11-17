@@ -45,7 +45,7 @@ namespace HTTPDriver
 
         public IOptions Manage()
         {
-            throw new System.NotImplementedException();
+            return new Manage(_engine.Cookies);
         }
 
         public INavigation Navigate()

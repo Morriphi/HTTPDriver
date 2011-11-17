@@ -24,7 +24,7 @@ namespace HTTPDriver.Browser.UnitTest
 
         public WebHeaderCollection Headers
         {
-            get { return null; }
+            get { return new WebHeaderCollection(); }
         }
     }
 }

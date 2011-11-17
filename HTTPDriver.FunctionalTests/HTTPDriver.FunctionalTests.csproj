@@ -69,6 +69,7 @@
     <Compile Include="Helpers\Site.cs" />
     <Compile Include="Helpers\TestServer.cs" />
     <Compile Include="HttpTestSiteFixture.cs" />
+    <Compile Include="ManageTests.cs" />
     <Compile Include="NavigationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Http\WebRequesterTests.cs" />

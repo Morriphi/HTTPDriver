@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using HTTPDriver.Browser.Cookies;
 using NUnit.Framework;
 
@@ -8,6 +9,9 @@ namespace HTTPDriver.Browser.UnitTest.Cookies
     public class CookieParserTest
     {
         private DateTime _expiry;
+
+        //HTTP State Management Mechanism - COOKIES
+        //http://www.ietf.org/rfc/rfc2109.txt
 
         [SetUp]
         public void BeforeEachTest()
@@ -64,5 +68,7 @@ namespace HTTPDriver.Browser.UnitTest.Cookies
             Assert.That((object) cookie.Value, Is.EqualTo("Flavour=Chocolate&Chip"));
             Assert.That((object) cookie.Expires, Is.EqualTo(DateTime.MinValue));
         }
+
+  
     }
 }
