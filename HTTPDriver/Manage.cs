@@ -5,16 +5,11 @@ namespace HTTPDriver
 {
     public class Manage : IOptions
     {
-        private ICookieJar _cookieJar;
+        private readonly ICookieJar _cookieJar;
 
         public Manage(CookieJar cookieJar)
         {
-            _cookieJar = new CookieJarWebDriver();
-            foreach (var cookie in cookieJar)
-            {
-                _cookieJar.AddCookie(new Cookie(cookie.Name, cookie.Value));
-            }
-            
+            _cookieJar = new CookieJarWebDriver(cookieJar);    
         }
         public ITimeouts Timeouts()
         {
