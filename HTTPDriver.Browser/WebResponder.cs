@@ -9,7 +9,6 @@ namespace HTTPDriver.Browser
     {
         private readonly HtmlDocument _documentNode = new HtmlDocument();
         private readonly HttpWebResponse _httpWebResponse;
-        
 
         public WebResponder(WebResponse response)
         {
@@ -22,8 +21,7 @@ namespace HTTPDriver.Browser
                 throw new NotAnHttpWebResponseException();
 
             _httpWebResponse = httpWebResponse;
-            
-            
+                        
             var responseStream = httpWebResponse.GetResponseStream();
 
             if(responseStream==null)
@@ -32,7 +30,8 @@ namespace HTTPDriver.Browser
             CreateDocumentNode(responseStream);
         }
 
-        public HttpStatusCode StatusCode { 
+        public HttpStatusCode StatusCode 
+        { 
             get { return _httpWebResponse.StatusCode; }
         }
         public WebHeaderCollection Headers
@@ -42,7 +41,6 @@ namespace HTTPDriver.Browser
 
         private void CreateDocumentNode(Stream responseStream)
         {
-            
             _documentNode.Load(responseStream);
         }
         

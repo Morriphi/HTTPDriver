@@ -59,8 +59,6 @@
     <Compile Include="BrowserTest.cs" />
     <Compile Include="Cookies\CookieJarTest.cs" />
     <Compile Include="Cookies\CookieParserTest.cs" />
-    <Compile Include="CookieWebRequester.cs" />
-    <Compile Include="CookieWebResponder.cs" />
     <Compile Include="BrowserHistoryTest.cs" />
     <Compile Include="HtmlNodeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

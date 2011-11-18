@@ -1,3 +1,4 @@
+using HTTPDriver.Browser.UnitTest.Fakes;
 using NUnit.Framework;
 
 namespace HTTPDriver.Browser.UnitTest
@@ -14,7 +15,7 @@ namespace HTTPDriver.Browser.UnitTest
         [SetUp]
         public void BeforeEachTest()
         {
-            _browser = new BrowserEngine(new WebRequesterFake(""));
+            _browser = new BrowserEngine(new FakeWebRequester(""));
         }
 
         [Test]

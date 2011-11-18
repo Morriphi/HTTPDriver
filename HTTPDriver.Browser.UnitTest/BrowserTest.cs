@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using HTTPDriver.Browser.Cookies;
+using HTTPDriver.Browser.UnitTest.Fakes;
 using NUnit.Framework;
 
 namespace HTTPDriver.Browser.UnitTest
@@ -7,13 +7,20 @@ namespace HTTPDriver.Browser.UnitTest
     [TestFixture]
     public class BrowserTest
     {
+        private FakeWebRequester _requester;
+
+        [SetUp]
+        public void BeforeEachTest()
+        {
+            _requester = new FakeWebRequester("<p>Hello world</p>");
+        }
+
         [Test]
         public void LoadsUrl()
         {
             const string location = "http://www.totaljobs.com/";
-            var requester = new WebRequesterFake("<p>Hello world</p>");
-
-            var browser = new BrowserEngine(requester);
+        
+            var browser = new BrowserEngine(_requester);
             browser.Load(location);
 
             Assert.That(browser.Location.ToString(), Is.EqualTo(location));
@@ -25,10 +32,11 @@ namespace HTTPDriver.Browser.UnitTest
         [Test]
         public void ShouldSetCookie()
         {
-            string cookieText = "Chocolate=Chip; expires=Tue, 03-Aug-2010 09:25:03 GMT; path=/";
-            var requester = new CookieWebRequester(new CookieWebResponder(cookieText));
+            const string cookieText = "Chocolate=Chip; expires=Tue, 03-Aug-2010 09:25:03 GMT; path=/";
 
-            var browser = new BrowserEngine(requester);
+            _requester.AddCookie(cookieText);
+
+            var browser = new BrowserEngine(_requester);
             browser.Load("http://www.totaljobs.com/");
 
             Assert.That(browser.Headers[HttpResponseHeader.SetCookie], Is.EqualTo(cookieText));
