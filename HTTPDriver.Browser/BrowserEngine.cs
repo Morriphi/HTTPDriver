@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using HTTPDriver.Browser.Cookies;
 
@@ -36,19 +35,19 @@ namespace HTTPDriver.Browser
 
         private void PopulateCookies()
         {
-            if (ResponseHasCookie())
-                AddCookie();
+            if (ResponseHasCookies())
+                AddCookies();
         }
 
-        private bool ResponseHasCookie()
+        private bool ResponseHasCookies()
         {
             return _webResponder.Cookies.Count > 0;
         }
 
-        private void AddCookie()
+        private void AddCookies()
         {
-            foreach (var cookie in _webResponder.Cookies)
-                Cookies.AddCookie(CookieParser.ParseCookie(cookie.ToString()));
+            foreach (Cookie cookie in _webResponder.Cookies)
+                Cookies.AddCookie(cookie);
         }
 
         public Uri Location { get; private set; }

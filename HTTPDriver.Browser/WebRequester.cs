@@ -45,7 +45,7 @@ namespace HTTPDriver.Browser
             _request.CookieContainer = new CookieContainer();
         }
 
-        private string CreatePostDataString(IDictionary<string, string> postdata)
+        private string CreatePostDataString(IEnumerable<KeyValuePair<string, string>> postdata)
         {
             return string.Join("&", (from value in postdata
                     select value.Key + "=" + value.Value).ToArray());

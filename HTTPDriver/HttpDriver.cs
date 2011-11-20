@@ -9,6 +9,7 @@ namespace HTTPDriver
     {
         private readonly BrowserEngine _engine;
         private readonly INavigation _navigation;
+        private readonly IOptions _manager;
 
         public WebHeaderCollection Headers { get { return _engine.Headers; } }
         public HttpStatusCode StatusCode { get { return _engine.ResponseStatusCode; } }
@@ -17,6 +18,7 @@ namespace HTTPDriver
         {
             _engine = new BrowserEngine(webRequester);
             _navigation = new Navigation(this);
+            _manager = new Manage(GetBrowser().Cookies);
         }
 
         public IWebElement FindElement(By by)
@@ -45,7 +47,7 @@ namespace HTTPDriver
 
         public IOptions Manage()
         {
-            return new Manage(_engine.Cookies);
+            return _manager;
         }
 
         public INavigation Navigate()
