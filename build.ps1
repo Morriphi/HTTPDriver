@@ -1,0 +1,1 @@
+.\build\tools\psake.ps1 "..\build.ps1"
