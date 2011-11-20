@@ -14,13 +14,15 @@ namespace HTTPDriver.Browser.FunctionalTest
         }
 
         [Test]
-        public void ShouldHaveCookie()
+        public void ShouldHaveCookies()
         {
             _engine.Load("http://localhost:9001/TestSite/SetCookie.aspx");
 
-            Assert.That(_engine.Cookies.AllCookies.Count, Is.EqualTo(1));
+            Assert.That(_engine.Cookies.AllCookies.Count, Is.EqualTo(2));
             Assert.That(_engine.Cookies.GetCookieNamed("Tea"), Is.Not.Null);
+            Assert.That(_engine.Cookies.GetCookieNamed("Coffee"), Is.Not.Null);
             Assert.That(_engine.Cookies.GetCookieNamed("Tea").Value, Is.EqualTo("LoveOne"));
+            Assert.That(_engine.Cookies.GetCookieNamed("Coffee").Value, Is.EqualTo("BlackStrongNoSugar"));
         }
     }
 }

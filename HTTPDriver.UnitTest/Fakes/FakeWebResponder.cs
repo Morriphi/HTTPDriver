@@ -40,6 +40,11 @@ namespace HTTPDriver.UnitTest.Fakes
             get { return null; }
         }
 
+        public CookieCollection Cookies
+        {
+            get { return new CookieCollection(); }
+        }
+
         public IEnumerable<Cookie> GetCookies()
         {
             throw new System.NotImplementedException();

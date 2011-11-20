@@ -42,6 +42,7 @@ namespace HTTPDriver.Browser
         {
             _request = (HttpWebRequest) WebRequest.Create(url);
             _request.AllowAutoRedirect = _shouldFollowRedirects;
+            _request.CookieContainer = new CookieContainer();
         }
 
         private string CreatePostDataString(IDictionary<string, string> postdata)

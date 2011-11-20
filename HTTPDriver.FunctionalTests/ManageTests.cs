@@ -21,7 +21,8 @@ namespace HTTPDriver.FunctionalTests
 
             Assert.That(_driver.Manage(), Is.InstanceOf<Manage>());
 
-            Assert.That(_driver.Manage().Cookies.GetCookieNamed("Tea").Value, Is.EqualTo("LoveOne"));
+            var cookieJar = _driver.Manage().Cookies;   
+            Assert.That(cookieJar.GetCookieNamed("Tea").Value, Is.EqualTo("LoveOne"));
         }
     }
 }

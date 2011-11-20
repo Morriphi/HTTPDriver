@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using HtmlAgilityPack;
 
 namespace HTTPDriver.Browser.UnitTest.Fakes
@@ -27,12 +28,7 @@ namespace HTTPDriver.Browser.UnitTest.Fakes
             return _responder;
         }
 
-        public void AddCookies(IEnumerable<string> cookiesToSet)
-        {
-            _responder.AddCookies(cookiesToSet);
-        }
-
-        public void AddCookie(string cookieToSet)
+        public void AddCookie(Cookie cookieToSet)
         {
             _responder.AddCookie(cookieToSet);
         }

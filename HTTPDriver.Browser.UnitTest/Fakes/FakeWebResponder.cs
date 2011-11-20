@@ -8,11 +8,13 @@ namespace HTTPDriver.Browser.UnitTest.Fakes
     {
         private readonly HtmlNode _document;
         private readonly WebHeaderCollection _header;
+        private readonly CookieCollection _cookies;
 
         public FakeWebResponder(HtmlNode document)
         {
             _document = document;
             _header = new WebHeaderCollection();
+            _cookies = new CookieCollection();
         }
 
         public HtmlNode Page
@@ -30,15 +32,14 @@ namespace HTTPDriver.Browser.UnitTest.Fakes
             get { return _header; }
         }
 
-        public void AddCookies(IEnumerable<string> cookiesToSet)
+        public CookieCollection Cookies
         {
-            foreach (var cookie in cookiesToSet)
-                AddCookie(cookie);
+            get { return _cookies; }
         }
 
-        public void AddCookie(string cookieToSet)
+        public void AddCookie(Cookie cookie)
         {
-            Headers.Add(HttpResponseHeader.SetCookie, cookieToSet);
+            _cookies.Add(cookie);
         }
     }
 }

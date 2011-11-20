@@ -21,7 +21,7 @@ namespace HTTPDriver.Browser
                 throw new NotAnHttpWebResponseException();
 
             _httpWebResponse = httpWebResponse;
-                        
+            
             var responseStream = httpWebResponse.GetResponseStream();
 
             if(responseStream==null)
@@ -34,9 +34,15 @@ namespace HTTPDriver.Browser
         { 
             get { return _httpWebResponse.StatusCode; }
         }
+
         public WebHeaderCollection Headers
         {
             get { return _httpWebResponse.Headers; }
+        }
+
+        public CookieCollection Cookies
+        {
+            get { return _httpWebResponse.Cookies; }
         }
 
         private void CreateDocumentNode(Stream responseStream)

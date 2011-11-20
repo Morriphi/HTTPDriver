@@ -60,10 +60,10 @@
     <Compile Include="Cookies\CookieJarTest.cs" />
     <Compile Include="Cookies\CookieParserTest.cs" />
     <Compile Include="BrowserHistoryTest.cs" />
+    <Compile Include="Fakes\FakeWebRequester.cs" />
+    <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="HtmlNodeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebRequesterFake.cs" />
-    <Compile Include="WebResponderFake.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HTTPDriver.Browser\HTTPDriver.Browser.csproj">
