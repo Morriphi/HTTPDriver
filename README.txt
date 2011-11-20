@@ -1,5 +1,5 @@
 HTTPDriver
 
-To run automated build in PowerShell execute .\build.psm1 in HTTPDrvier
+To run automated build in PowerShell execute .\build.psm1 in HTTPDriver
 
 You may need to run PowerShell as administrator
