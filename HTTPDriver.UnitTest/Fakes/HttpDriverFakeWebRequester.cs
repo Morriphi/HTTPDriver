@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using HTTPDriver.Browser;
 
 namespace HTTPDriver.UnitTest.Fakes
@@ -15,6 +16,11 @@ namespace HTTPDriver.UnitTest.Fakes
         public IWebResponder Get(string url)
         {
             return new FakeWebResponder(_responses[url]);
+        }
+
+        public void AddCookie(Cookie cookie)
+        {
+            
         }
     }
 }

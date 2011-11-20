@@ -9,7 +9,7 @@ namespace HTTPDriver.Browser
     {
         private HttpWebRequest _request;
         private bool _shouldFollowRedirects=true;
-
+        private readonly IList<Cookie> _cookies = new List<Cookie>();
 
         public WebRequester AutomaticallyFollowRedirects(bool shouldFollowRedirects)
         {
@@ -21,6 +21,11 @@ namespace HTTPDriver.Browser
         {
             Create(url);
             return new WebResponder(_request.GetResponse());
+        }
+
+        public void AddCookie(Cookie cookie)
+        {
+            _cookies.Add(cookie);
         }
 
         public IWebResponder Post(string url, IDictionary<string, string>  postdata)
@@ -43,6 +48,12 @@ namespace HTTPDriver.Browser
             _request = (HttpWebRequest) WebRequest.Create(url);
             _request.AllowAutoRedirect = _shouldFollowRedirects;
             _request.CookieContainer = new CookieContainer();
+
+            foreach (var cookie in _cookies)
+            {
+                cookie.Domain = _request.Address.Host;
+                _request.CookieContainer.Add(cookie);
+            }
         }
 
         private string CreatePostDataString(IEnumerable<KeyValuePair<string, string>> postdata)

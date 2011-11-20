@@ -1,3 +1,4 @@
+using System.Net;
 using HTTPDriver.Browser;
 namespace HTTPDriver.UnitTest.Fakes
 {
@@ -6,6 +7,11 @@ namespace HTTPDriver.UnitTest.Fakes
         public IWebResponder Get(string url)
         {
             return new FakeWebResponder("");
+        }
+
+        public void AddCookie(Cookie cookie)
+        {
+            
         }
     }
 }

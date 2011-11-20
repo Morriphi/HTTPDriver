@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
-using HTTPDriver.Browser.Cookies;
+using HTTPDriver.Browser;
 using OpenQA.Selenium;
 
 namespace HTTPDriver

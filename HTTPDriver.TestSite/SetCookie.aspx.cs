@@ -8,7 +8,7 @@ namespace HTTPDriver.TestSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Cookies.Add(new HttpCookie("Tea") {Value = "LoveOne"});
+            Response.Cookies.Add(new HttpCookie("Tea") {Value = "LoveOne", Expires = DateTime.Now.AddDays(-1) });
             Response.Cookies.Add(new HttpCookie("Coffee") {Value = "BlackStrongNoSugar"});
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using HTTPDriver.Browser.UnitTest.Fakes;
 using NUnit.Framework;
 
@@ -58,6 +59,22 @@ namespace HTTPDriver.Browser.UnitTest
             Assert.That(_browser.Cookies.AllCookies.Count, Is.EqualTo(2));
             Assert.That(_browser.Cookies.AllCookies[0].Name, Is.EqualTo(chocolateChip.Name));
             Assert.That(_browser.Cookies.AllCookies[1].Name, Is.EqualTo(teaWhiteOneSugar.Name));
+        }
+
+        [Test]
+        public void ShouldSetExpiredCookie()
+        {
+            var chocolateChip = new Cookie("ChocolateChip", "", "", "")
+                                    { Expired = true, Expires = DateTime.Now.AddDays(-1) };
+
+            _requester.AddCookie(chocolateChip);
+
+            _browser.Load("http://www.totaljobs.com/");
+
+            Assert.That(_browser.Cookies.AllCookies.Count, Is.EqualTo(1));
+            Assert.That(_browser.Cookies.AllCookies[0].Name, Is.EqualTo(chocolateChip.Name));
+            Assert.That(_browser.Cookies.AllCookies[0].Expired, Is.EqualTo(chocolateChip.Expired));
+            Assert.That(_browser.Cookies.AllCookies[0].Expires, Is.EqualTo(chocolateChip.Expires));
         }
     }
 }

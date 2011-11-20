@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using HTTPDriver.Browser.Cookies;
 
 namespace HTTPDriver.Browser
 {
@@ -28,7 +27,11 @@ namespace HTTPDriver.Browser
 
         private void GoTo(string location)
         {
+            foreach (var cookie in Cookies)
+                _requester.AddCookie(cookie);
+
             _webResponder = _requester.Get(location);
+            
             Location = new Uri(location);
             PopulateCookies();
         }
@@ -83,6 +86,11 @@ namespace HTTPDriver.Browser
         {
             _history.Forward();
             GoTo(_history.CurrentUrl());
+        }
+
+        public void AddCookie(Cookie cookie)
+        {
+            Cookies.AddCookie(cookie);
         }
     }
 }

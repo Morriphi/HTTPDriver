@@ -53,6 +53,7 @@
     <Content Include="Forms\post-data.aspx" />
     <Content Include="Forms\simple-post-result.html" />
     <Content Include="Forms\simple-post.html" />
+    <Content Include="GetCookie.aspx" />
     <Content Include="PermanentRedirectToAnotherPage.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -88,6 +89,13 @@
     </Compile>
     <Compile Include="Forms\post-data.aspx.designer.cs">
       <DependentUpon>post-data.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetCookie.aspx.cs">
+      <DependentUpon>GetCookie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetCookie.aspx.designer.cs">
+      <DependentUpon>GetCookie.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermanentRedirectToAnotherPage.aspx.cs">
       <DependentUpon>PermanentRedirectToAnotherPage.aspx</DependentUpon>
