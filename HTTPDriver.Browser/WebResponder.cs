@@ -45,6 +45,11 @@ namespace HTTPDriver.Browser
             get { return _httpWebResponse.Cookies; }
         }
 
+        public Uri Url
+        {
+            get { return _httpWebResponse.ResponseUri; }
+        }
+
         private void CreateDocumentNode(Stream responseStream)
         {
             _documentNode.Load(responseStream);

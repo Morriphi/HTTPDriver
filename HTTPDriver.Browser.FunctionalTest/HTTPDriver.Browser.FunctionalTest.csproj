@@ -51,6 +51,7 @@
     <Compile Include="CookieTest.cs" />
     <Compile Include="HttpTestSiteFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedirectTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

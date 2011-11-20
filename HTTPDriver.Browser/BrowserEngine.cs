@@ -31,8 +31,8 @@ namespace HTTPDriver.Browser
                 _requester.AddCookie(cookie);
 
             _webResponder = _requester.Get(location);
-            
-            Location = new Uri(location);
+
+            Location = new Uri(_webResponder.Url.ToString());
             PopulateCookies();
         }
 
@@ -63,11 +63,6 @@ namespace HTTPDriver.Browser
         public HttpStatusCode ResponseStatusCode
         {
             get { return _webResponder.StatusCode; }
-        }
-
-        public WebHeaderCollection Headers 
-        {
-            get { return _webResponder.Headers; }
         }
 
         public void SetCurrent(string url)

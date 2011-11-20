@@ -13,14 +13,14 @@ namespace HTTPDriver.UnitTest
         private const string Url1 = "http://www.testurl1.com/";
         private const string Url2 = "http://www.testurl2.com/";
         private const string Url3 = "http://www.testurl3.com/";
-        private const string TotaljobsUrl = "http://www.totaljobs.com";
+        private const string TotaljobsUrl = "http://www.totaljobs.com/";
 
-        private HttpDriverFakeWebRequester _webRequester;
+        private FakeWebRequester _webRequester;
 
         [SetUp]
         public void BeforeEachTest()
         {
-            _webRequester = new HttpDriverFakeWebRequester();
+            _webRequester = new FakeWebRequester();
             _driver = new HttpDriver(_webRequester);
         }
 

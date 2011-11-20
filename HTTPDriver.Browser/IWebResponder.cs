@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using HtmlAgilityPack;
 
@@ -9,5 +10,6 @@ namespace HTTPDriver.Browser
         HttpStatusCode StatusCode { get; }
         WebHeaderCollection Headers { get; }
         CookieCollection Cookies { get; }
+        Uri Url { get; }
     }
 }

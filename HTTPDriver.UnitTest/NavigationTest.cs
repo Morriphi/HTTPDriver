@@ -1,5 +1,5 @@
 ﻿using System;
-using HTTPDriver.UnitTest.Fakes;
+using HTTPDriver.Browser.UnitTest.Fakes;
 using NUnit.Framework;
 
 namespace HTTPDriver.UnitTest
@@ -13,12 +13,12 @@ namespace HTTPDriver.UnitTest
         private const string Url2 = @"http://www.testurl2.com/";
         private const string Url3 = @"http://www.testurl3.com/";
 
-        private NavigationFakeWebRequester _webRequester;
+        private FakeWebRequester _webRequester;
 
         [SetUp]
         public void BeforeEachTest()
         {
-            _webRequester = new NavigationFakeWebRequester();
+            _webRequester = new FakeWebRequester("");
 
             _driver = new HttpDriver(_webRequester);
             _navigation = new Navigation(_driver);
@@ -28,7 +28,7 @@ namespace HTTPDriver.UnitTest
         [TestCase("http://www.test.com/Default.aspx", "http://www.test.com/Sub/RelativePage.aspx")]
         [TestCase("http://www.test.com/1/2",  "http://www.test.com/1/2/Sub/RelativePage.aspx")]
         [TestCase("http://www.test.com/1/2/", "http://www.test.com/1/2/Sub/RelativePage.aspx")]
-        [TestCase("http://www.test.com", "http://www.test.com/Sub/RelativePage.aspx")]
+        [TestCase("http://www.test.com/", "http://www.test.com/Sub/RelativePage.aspx")]
         [TestCase("http://www.test.com/", "http://www.test.com/Sub/RelativePage.aspx")]
         [TestCase("http://www.test.com/1/2/3/Default.aspx", "http://www.test.com/1/2/3/Sub/RelativePage.aspx")]
         [TestCase("http://www.test.com/1/2/3/Default.aspx?id=1", "http://www.test.com/1/2/3/Sub/RelativePage.aspx")]

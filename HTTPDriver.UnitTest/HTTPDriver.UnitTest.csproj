@@ -68,8 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fakes\NavigationFakeWebRequester.cs" />
-    <Compile Include="Fakes\HttpDriverFakeWebRequester.cs" />
+    <Compile Include="Fakes\FakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="Forms\FormPostDataReader.cs" />
     <Compile Include="HtmlParserTest.cs" />
