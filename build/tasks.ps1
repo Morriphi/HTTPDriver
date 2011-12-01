@@ -23,7 +23,7 @@ Task Test -depends Build {
     }
 }
 
-Task Checkin {
+Task Checkin -depends Test {
 	if($commit_comment -eq ""){
 		Write-Host "Unable to check in: commit comment blank" -for Red
 	} else {
