@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Morrisp1\Documents\HTTPDriver\HTTPDriver.UnitTest\bin\Debug\HTTPDriver.UnitTest.dll" total="48" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-01" time="11:03:45">
-  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5446" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\Morrisp1\Documents\HTTPDriver\build" machine-name="TRLW21214" user="morrisp1" user-domain="B2B" />
+<test-results name="C:\Users\morrisp1\Documents\HTTPDriver\HTTPDriver.UnitTest\bin\Debug\HTTPDriver.UnitTest.dll" total="48" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-01" time="14:59:48">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5446" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\morrisp1\Documents\HTTPDriver\build" machine-name="TRLW21214" user="morrisp1" user-domain="B2B" />
   <culture-info current-culture="en-GB" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Users\Morrisp1\Documents\HTTPDriver\HTTPDriver.UnitTest\bin\Debug\HTTPDriver.UnitTest.dll" executed="True" result="Success" success="True" time="1.560" asserts="0">
+  <test-suite type="Assembly" name="C:\Users\morrisp1\Documents\HTTPDriver\HTTPDriver.UnitTest\bin\Debug\HTTPDriver.UnitTest.dll" executed="True" result="Success" success="True" time="1.643" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HTTPDriver" executed="True" result="Success" success="True" time="1.544" asserts="0">
+      <test-suite type="Namespace" name="HTTPDriver" executed="True" result="Success" success="True" time="1.623" asserts="0">
         <results>
-          <test-suite type="Namespace" name="UnitTest" executed="True" result="Success" success="True" time="1.544" asserts="0">
+          <test-suite type="Namespace" name="UnitTest" executed="True" result="Success" success="True" time="1.618" asserts="0">
             <results>
-              <test-suite type="Namespace" name="Forms" executed="True" result="Success" success="True" time="0.234" asserts="0">
+              <test-suite type="Namespace" name="Forms" executed="True" result="Success" success="True" time="0.224" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="FormPostDataReaderTests" executed="True" result="Success" success="True" time="0.234" asserts="0">
+                  <test-suite type="TestFixture" name="FormPostDataReaderTests" executed="True" result="Success" success="True" time="0.219" asserts="0">
                     <results>
-                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadActionFromForm" executed="True" result="Success" success="True" time="0.125" asserts="1" />
-                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadMethodFromForm" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadPostDataFromInputFields" executed="True" result="Success" success="True" time="0.062" asserts="2" />
-                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadPostDataFromSelectFieldsWithOptionsWithNoValueAttribute" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadActionFromForm" executed="True" result="Success" success="True" time="0.117" asserts="1" />
+                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadMethodFromForm" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadPostDataFromInputFields" executed="True" result="Success" success="True" time="0.058" asserts="2" />
+                      <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadPostDataFromSelectFieldsWithOptionsWithNoValueAttribute" executed="True" result="Success" success="True" time="0.021" asserts="1" />
                       <test-case name="HTTPDriver.UnitTest.Forms.FormPostDataReaderTests.ReadPostDataFromSelectFieldsWithOptionsWithValueAttribute" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                     </results>
                   </test-suite>
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="HttpDriverTest" executed="True" result="Success" success="True" time="0.250" asserts="0">
+              <test-suite type="TestFixture" name="HttpDriverTest" executed="True" result="Success" success="True" time="0.257" asserts="0">
                 <results>
-                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.FindElement" executed="True" result="Success" success="True" time="0.234" asserts="4" />
+                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.FindElement" executed="True" result="Success" success="True" time="0.235" asserts="4" />
                   <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Initialise" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Navigate" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.PageSource" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Title" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Url" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Navigate" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.PageSource" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Title" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.HttpDriverTest.Url" executed="True" result="Success" success="True" time="0.003" asserts="1" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="NavigationTest" executed="True" result="Success" success="True" time="0.062" asserts="0">
+              <test-suite type="TestFixture" name="NavigationTest" executed="True" result="Success" success="True" time="0.067" asserts="0">
                 <results>
-                  <test-suite type="ParameterizedTest" name="GoToUrlShouldHandleRelativeUrls" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                  <test-suite type="ParameterizedTest" name="GoToUrlShouldHandleRelativeUrls" executed="True" result="Success" success="True" time="0.046" asserts="0">
                     <results>
-                      <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/1/2/3/Default.aspx?id=1&quot;,&quot;http://www.test.com/1/2/3/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.016" asserts="3" />
+                      <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/1/2/3/Default.aspx?id=1&quot;,&quot;http://www.test.com/1/2/3/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.021" asserts="3" />
                       <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/query?id=1&quot;,&quot;http://www.test.com/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="3" />
                       <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/Default.aspx&quot;,&quot;http://www.test.com/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="3" />
                       <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/1/2/&quot;,&quot;http://www.test.com/1/2/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.016" asserts="3" />
@@ -46,43 +46,43 @@
                       <test-case name="HTTPDriver.UnitTest.NavigationTest.GoToUrlShouldHandleRelativeUrls(&quot;http://www.test.com/1/2&quot;,&quot;http://www.test.com/1/2/Sub/RelativePage.aspx&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="3" />
                     </results>
                   </test-suite>
-                  <test-case name="HTTPDriver.UnitTest.NavigationTest.InvalidUrl" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoBackToPreviousUrl" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoForwardToNextUrl" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoToUrlWithGivenStringUrl" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.NavigationTest.InvalidUrl" executed="True" result="Success" success="True" time="0.011" asserts="0" />
+                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoBackToPreviousUrl" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoForwardToNextUrl" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoToUrlWithGivenStringUrl" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                   <test-case name="HTTPDriver.UnitTest.NavigationTest.ShouldGoToUrlWithGivenUri" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="WebElementFinderTest" executed="True" result="Success" success="True" time="0.390" asserts="0">
+              <test-suite type="TestFixture" name="WebElementFinderTest" executed="True" result="Success" success="True" time="0.466" asserts="0">
                 <results>
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByClassName" executed="True" result="Success" success="True" time="0.140" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByCssSelector" executed="True" result="Success" success="True" time="0.203" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementById" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByLinkText" executed="True" result="Success" success="True" time="0.016" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByClassName" executed="True" result="Success" success="True" time="0.158" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByCssSelector" executed="True" result="Success" success="True" time="0.251" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementById" executed="True" result="Success" success="True" time="0.002" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByLinkText" executed="True" result="Success" success="True" time="0.006" asserts="2" />
                   <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByPartialLink" executed="True" result="Success" success="True" time="0.016" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByTagName" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByXPath" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByClassName" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByCssSelector" executed="True" result="Success" success="True" time="0.016" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsById" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByLinkText" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByTagName" executed="True" result="Success" success="True" time="0.003" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementByXPath" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByClassName" executed="True" result="Success" success="True" time="0.007" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByCssSelector" executed="True" result="Success" success="True" time="0.005" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsById" executed="True" result="Success" success="True" time="0.001" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByLinkText" executed="True" result="Success" success="True" time="0.001" asserts="5" />
                   <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByLinkTextShouldOnlyMatchEntireText" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                   <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByPartialLinkText" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByTagName" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByXPath" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByTagName" executed="True" result="Success" success="True" time="0.001" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementFinderTest.FindElementsByXPath" executed="True" result="Success" success="True" time="0.001" asserts="3" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="WebElementTest" executed="True" result="Success" success="True" time="0.608" asserts="0">
+              <test-suite type="TestFixture" name="WebElementTest" executed="True" result="Success" success="True" time="0.598" asserts="0">
                 <results>
                   <test-case name="HTTPDriver.UnitTest.WebElementTest.ClickShouldBeIgnoredWhenNotApplicable" executed="True" result="Success" success="True" time="0.546" asserts="0" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.ClickShouldFollowHrefs" executed="True" result="Success" success="True" time="0.047" asserts="0" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElement" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElements" executed="True" result="Success" success="True" time="0.000" asserts="3" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElementShouldReturnNullIfNoElementsAreReturned" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElementsShouldReturnAnEmptyListIfNoElementsAreReturned" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.GetAttribute" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.ClickShouldFollowHrefs" executed="True" result="Success" success="True" time="0.042" asserts="0" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElement" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElements" executed="True" result="Success" success="True" time="0.001" asserts="3" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElementShouldReturnNullIfNoElementsAreReturned" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.FindElementsShouldReturnAnEmptyListIfNoElementsAreReturned" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.GetAttribute" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                   <test-case name="HTTPDriver.UnitTest.WebElementTest.TagName" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                  <test-case name="HTTPDriver.UnitTest.WebElementTest.Text" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="HTTPDriver.UnitTest.WebElementTest.Text" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                 </results>
               </test-suite>
             </results>
