@@ -182,11 +182,11 @@
     <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
   </PropertyGroup>
   <PropertyGroup>
-    <SolutionDir>C:\Users\morriphi\Documents\HTTPDriver\</SolutionDir>
+    <SolutionDir>C:\Users\morrisp1\Documents\HTTPDriver\</SolutionDir>
     <SolutionExt>.sln</SolutionExt>
     <SolutionFileName>HttpDriver.sln</SolutionFileName>
     <SolutionName>HttpDriver</SolutionName>
-    <SolutionPath>C:\Users\morriphi\Documents\HTTPDriver\HttpDriver.sln</SolutionPath>
+    <SolutionPath>C:\Users\morrisp1\Documents\HTTPDriver\HttpDriver.sln</SolutionPath>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
