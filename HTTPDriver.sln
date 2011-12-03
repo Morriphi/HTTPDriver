@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{D5D27F9A-3532-4064-A6C3-EBE7F41FE812}"
 	ProjectSection(SolutionItems) = preProject
 		build\build.ps1 = build\build.ps1
+		build\checkin.ps1 = build\checkin.ps1
+		build\tasks.ps1 = build\tasks.ps1
 	EndProjectSection
 EndProject
 Global
