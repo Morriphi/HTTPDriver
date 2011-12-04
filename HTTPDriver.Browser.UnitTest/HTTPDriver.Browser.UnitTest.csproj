@@ -62,6 +62,7 @@
     <Compile Include="Fakes\FakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />
     <Compile Include="HtmlNodeBuilder.cs" />
+    <Compile Include="PageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

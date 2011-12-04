@@ -11,6 +11,13 @@ namespace HTTPDriver.Browser
             _html = html;
         }
 
+        public Page(string html)
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(html);
+            _html = htmlDocument.DocumentNode.FirstChild;
+        }
+
         public string Title()
         {
             var title = _html.SelectSingleNode("//title");
@@ -30,6 +37,11 @@ namespace HTTPDriver.Browser
         public HtmlNode HtmlNode()
         {
             return _html;
+        }
+
+        public Element FindById(string id)
+        {
+            return new Element(_html.OwnerDocument.GetElementbyId(id));
         }
     }
 }

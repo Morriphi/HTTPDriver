@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BrowserEngine.cs" />
     <Compile Include="CookieJar.cs" />
+    <Compile Include="Element.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HtmlNodeExtensions.cs" />
     <Compile Include="IWebRequester.cs" />
