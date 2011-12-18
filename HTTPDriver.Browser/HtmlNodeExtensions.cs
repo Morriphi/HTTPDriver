@@ -1,3 +1,4 @@
+using System;
 using HtmlAgilityPack;
 
 namespace HTTPDriver.Browser
@@ -7,7 +8,7 @@ namespace HTTPDriver.Browser
         public static HtmlNode FindParent(this HtmlNode element, string tagName)
         {
             var current = element;
-            while (current != null && current.Name != tagName)
+            while (current != null && !current.Name.Equals(tagName, StringComparison.CurrentCultureIgnoreCase))
                 current = current.ParentNode;
             return current;
         }

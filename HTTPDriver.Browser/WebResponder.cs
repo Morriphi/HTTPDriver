@@ -7,7 +7,7 @@ namespace HTTPDriver.Browser
 {
     public class WebResponder : IWebResponder
     {
-        private readonly HtmlDocument _documentNode = new HtmlDocument();
+        private HtmlDocument _documentNode;
         private readonly HttpWebResponse _httpWebResponse;
 
         public WebResponder(WebResponse response)
@@ -52,6 +52,8 @@ namespace HTTPDriver.Browser
 
         private void CreateDocumentNode(Stream responseStream)
         {
+            HtmlNode.ElementsFlags.Remove("form");
+            _documentNode = new HtmlDocument();
             _documentNode.Load(responseStream);
         }
         
