@@ -8,6 +8,7 @@ namespace HTTPDriver.Browser
         private readonly IWebRequester _requester;
         private readonly History _history;
         private IWebResponder _webResponder;
+        private Page _currentPage;
 
         public CookieJar Cookies { get; private set; }
 
@@ -31,9 +32,16 @@ namespace HTTPDriver.Browser
                 _requester.AddCookie(cookie);
 
             _webResponder = _requester.Get(location);
+            _currentPage = new Page(_webResponder.Page);
+            _currentPage.FormSubmitted += FormSubmitted;
 
             Location = new Uri(_webResponder.Url.ToString());
             PopulateCookies();
+        }
+
+        void FormSubmitted(FormSubmission formDetails)
+        {
+            Load(formDetails.Action);
         }
 
         private void PopulateCookies()
@@ -57,7 +65,7 @@ namespace HTTPDriver.Browser
 
         public Page Page 
         {
-            get { return new Page(_webResponder.Page); }
+            get { return _currentPage; }
         }
 
         public HttpStatusCode ResponseStatusCode

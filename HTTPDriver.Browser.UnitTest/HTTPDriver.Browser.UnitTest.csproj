@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="BrowserTest.cs" />
     <Compile Include="CookieJarTest.cs" />
+    <Compile Include="ElementTest.cs" />
     <Compile Include="HistoryTest.cs" />
     <Compile Include="Fakes\FakeWebRequester.cs" />
     <Compile Include="Fakes\FakeWebResponder.cs" />

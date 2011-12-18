@@ -1,10 +1,12 @@
-﻿using HtmlAgilityPack;
+﻿using System;
+using HtmlAgilityPack;
 
 namespace HTTPDriver.Browser
 {
     public class Element
     {
-        private HtmlNode _htmlNode;
+        private readonly HtmlNode _htmlNode;
+        public event Action<Element> Clicked;
 
         public Element(HtmlNode htmlNode)
         {
@@ -13,7 +15,17 @@ namespace HTTPDriver.Browser
 
         public void Click()
         {
-            // TODO: validation here
+            Clicked(this);
+        }
+
+        public string Id
+        {
+            get { return _htmlNode.Id; }
+        }
+
+        public HtmlNode HtmlNode
+        {
+            get { return _htmlNode; }
         }
     }
 }
