@@ -13,6 +13,7 @@ namespace HTTPDriver.Browser.UnitTest
 
         public HtmlNode Build()
         {
+            HtmlNode.ElementsFlags.Remove("form");
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(_markup);
             return htmlDocument.DocumentNode.FirstChild;
